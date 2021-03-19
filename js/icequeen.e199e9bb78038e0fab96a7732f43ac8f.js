@@ -32,7 +32,6 @@ $(function() {
     const SNOWGLOBE_PNG_ADDR = "0x621207093D2e65Bf3aC55dD8Bf0351B980A63815";
     const SNOWGLOBE_ETH_ADDR = "0x586554828eE99811A8ef75029351179949762c26";
     const SNOWGLOBE_LINK_ADDR = "0x00933c16e06b1d15958317C2793BC54394Ae356C";
-    const SNOWGLOBE_USDT_ADDR = "0x3fcFBCB4b368222fCB4d9c314eCA597489FE8605";
     const ICEQUEEN_ADDR = "0xB12531a2d758c7a8BF09f44FC88E646E1BF9D375";
 
     //pangolin pairs
@@ -41,14 +40,12 @@ $(function() {
     const PNG_AVAX_ADDR = "0xd7538cABBf8605BdE1f4901B47B8D42c61DE0367";
     const ETH_AVAX_ADDR = "0x1aCf1583bEBdCA21C8025E172D8E8f2817343d65";
 	const LINK_AVAX_ADDR = "0xbbc7fff833d27264aac8806389e02f717a5506c9";
-	const USDT_AVAX_ADDR = "0x9EE0a4E21bd333a6bb2ab298194320b8DaA26516";
 
     //tokens
     const SPGL_SUSHI_ADDRESS = "0x751089f1bf31b13fa0f0537ae78108088a2253bf";
     const SPGL_PNG_ADDRESS = "0x621207093D2e65Bf3aC55dD8Bf0351B980A63815";
     const SPGL_ETH_ADDRESS = "0x586554828eE99811A8ef75029351179949762c26";
     const SPGL_LINK_ADDRESS = "0x00933c16e06b1d15958317C2793BC54394Ae356C";
-    const SPGL_USDT_ADDRESS = "0x3fcFBCB4b368222fCB4d9c314eCA597489FE8605";
     const SNOB_ADDRESS = "0xc38f41a296a4493ff429f1238e030924a1542e50";
 
     //LP URLs
@@ -57,7 +54,6 @@ $(function() {
     const PNG_AVAX_POOL_URL = "https://app.pangolin.exchange/#/add/AVAX/0x60781c2586d68229fde47564546784ab3faca982";
     const ETH_AVAX_POOL_URL = "https://app.pangolin.exchange/#/add/AVAX/0xf20d962a6c8f70c731bd838a3a388d7d48fa6e15";
     const LINK_AVAX_POOL_URL = "https://app.pangolin.exchange/#/add/avax/0xb3fe5374f67d7a22886a0ee082b2e2f9d2651651";
-    const USDT_AVAX_POOL_URL = "https://app.pangolin.exchange/#/add/avax/0xde3a24028580884448a5397872046a019649b084";
 
     // TVL URLS
     const SUSHI_AVAX_TVL = "https://info.pangolin.exchange/#/account/0x14ec55f8B4642111A5aF4f5ddc56B7bE867eB6cC"
@@ -65,21 +61,19 @@ $(function() {
     const PNG_AVAX_TVL = "https://info.pangolin.exchange/#/account/0x6A803904b9eA0Fc982fBB077c7243c244Ae05a2d"
     const ETH_AVAX_TVL = "https://info.pangolin.exchange/#/account/0x953853590b805A0E885A75A3C786D2aFfcEEA3Cf"
     const LINK_AVAX_TVL = "https://info.pangolin.exchange/#/account/0x974Ef0bDA58C81F3094e124f530eF34fe70dc103"
-    const USDT_AVAX_TVL = "https://info.pangolin.exchange/#/account/0x74dB28797957a52a28963F424dAF2B10226ba04C"
 
     // Last Harvest
-    const ETH_AVAX_HARVEST = "3/19 1:34AM UTC - 189.15 PNG ($713.78)"
-    const PNG_AVAX_HARVEST = "3/19 1:34AM UTC - 42.44 PNG ($160.29)"
-    const SUSHI_AVAX_HARVEST = "3/19 1:34AM UTC - 137.75 PNG ($519.98)"
-    const LINK_AVAX_HARVEST = "3/19 1:34AM UTC - 55.82 PNG ($210.84)"
-	const USDT_AVAX_HARVEST = "3/19 1:34AM UTC - 128.63 PNG ($405.55)"
+    const ETH_AVAX_HARVEST = "3/16 6:51AM UTC - 69.39 PNG ($280.18)"
+    const PNG_AVAX_HARVEST = "3/16 6:51AM UTC - 101.95 PNG ($450.61)"
+    const SUSHI_AVAX_HARVEST = "3/16 6:51AM UTC - 43.25 PNG ($191.16)"
+    const LINK_AVAX_HARVEST = ""
 
     // Compounds Per Day
     const SUSHI_AVAX_COMPOUNDS = 6
     const PNG_AVAX_COMPOUNDS = 6
     const ETH_AVAX_COMPOUNDS = 6
     const LINK_AVAX_COMPOUNDS = 6
-    const USDT_AVAX_COMPOUNDS = 6
+
     // Gas
 	// Claim: 0.1645 
 	// Swap: 0.075221
@@ -124,15 +118,6 @@ $(function() {
 	}
 	const withdrawLINK = async function() {
 		return snowglobeContract_withdraw(SNOWGLOBE_ABI, SNOWGLOBE_LINK_ADDR, 1, SPGL_LINK_ADDRESS, App)
-	}
-	const approveUSDT = async function() {
-		return snowglobeContract_approve(PGL_ABI, SNOWGLOBE_USDT_ADDR, USDT_AVAX_ADDR, App)
-	}
-	const stakeUSDT= async function() {
-		return snowglobeContract_stake(SNOWGLOBE_ABI, SNOWGLOBE_USDT_ADDR, 1, USDT_AVAX_ADDR, App)
-	}
-	const withdrawUSDT = async function() {
-		return snowglobeContract_withdraw(SNOWGLOBE_ABI, SNOWGLOBE_USDT_ADDR, 1, SPGL_USDT_ADDRESS, App)
 	}
 	const approveSPGLSUSHI = async function() {
 		return icequeenContract_approve(SNOWGLOBE_ABI, ICEQUEEN_ADDR, SPGL_SUSHI_ADDRESS, App)
@@ -195,13 +180,11 @@ $(function() {
     const ETH_AVAX_TOKEN = new ethers.Contract(ETH_AVAX_ADDR, ERC20_ABI, signer)
     const SNOB_AVAX_TOKEN = new ethers.Contract(SNOB_AVAX_ADDR, ERC20_ABI, signer)
     const LINK_AVAX_TOKEN = new ethers.Contract(LINK_AVAX_ADDR, ERC20_ABI, signer)
-    const USDT_AVAX_TOKEN = new ethers.Contract(USDT_AVAX_ADDR, ERC20_ABI, signer)
 
     const SPGL_SUSHI_TOKEN = new ethers.Contract(SPGL_SUSHI_ADDRESS, ERC20_ABI, signer)
     const SPGL_PNG_TOKEN = new ethers.Contract(SPGL_PNG_ADDRESS, ERC20_ABI, signer)
     const SPGL_ETH_TOKEN = new ethers.Contract(SPGL_ETH_ADDRESS, ERC20_ABI, signer)
     const SPGL_LINK_TOKEN = new ethers.Contract(SPGL_LINK_ADDRESS, ERC20_ABI, signer)
-    const SPGL_USDT_TOKEN = new ethers.Contract(SPGL_USDT_ADDRESS, ERC20_ABI, signer)
 
     const SNOB_TOKEN = new ethers.Contract(SNOB_ADDRESS, ERC20_ABI, signer)
 
@@ -260,20 +243,73 @@ $(function() {
     const currentSPGLLINKTokens = await SPGL_LINK_TOKEN.balanceOf(App.YOUR_ADDRESS)
     const spglLinkDisplayAmt = currentSPGLLINKTokens > 1000 ? currentSPGLLINKTokens / 1e18 : 0;
 
-    const currentUSDTAVAXTokens = await USDT_AVAX_TOKEN.balanceOf(App.YOUR_ADDRESS)
-    const currentSPGLUSDTTokens = await SPGL_USDT_TOKEN.balanceOf(App.YOUR_ADDRESS)
-    const spglUsdtDisplayAmt = currentSPGLUSDTTokens > 1000 ? currentSPGLUSDTTokens / 1e18 : 0;
-
     const currentSNOBAVAXTokens = await SNOB_AVAX_TOKEN.balanceOf(App.YOUR_ADDRESS)
     const snobAvaxDisplayAmt = currentSNOBAVAXTokens > 1000 ? currentSNOBAVAXTokens / 1e18 : 0;
 
-	//snowglobes
-	_print(`<b>Snowglobes 🌐</b>`)
-	_print(`Deposit LP tokens into Snowglobes for automatic compounding. Save on gas costs!`)
-	_print(`Compound steps: Claim > Swap > Add Liquidity > Deposit\n`)
-	_print(`Gas cost of one manual compound: ${GAS_PER_COMPOUND} AVAX`)
-	_print(`Compounds per day/week/year: ${ETH_AVAX_COMPOUNDS}/${ETH_AVAX_COMPOUNDS*7}/${ETH_AVAX_COMPOUNDS*365} `)
-	_print(`Gas saved per day/week/year: ${(GAS_PER_COMPOUND * ETH_AVAX_COMPOUNDS).toFixed(2)}/${(GAS_PER_COMPOUND * ETH_AVAX_COMPOUNDS * 7).toFixed(2)}/${(GAS_PER_COMPOUND * ETH_AVAX_COMPOUNDS * 365).toFixed(2)} AVAX\n`)
+    const stakedPool1 = await ICEQUEEN_CONTRACT.userInfo(1, App.YOUR_ADDRESS)
+    const stakedPool2 = await ICEQUEEN_CONTRACT.userInfo(2, App.YOUR_ADDRESS)
+	const stakedPool3 = await ICEQUEEN_CONTRACT.userInfo(3, App.YOUR_ADDRESS)
+	const stakedPool4 = await ICEQUEEN_CONTRACT.userInfo(4, App.YOUR_ADDRESS)
+
+	// Total staked in each pool
+	const totalStakedSPGLSUSHI = await SPGL_SUSHI_TOKEN.balanceOf(ICEQUEEN_ADDR)
+    const totalStakedSPGLPNG = await SPGL_PNG_TOKEN.balanceOf(ICEQUEEN_ADDR)
+    const totalStakedSPGLETH = await SPGL_ETH_TOKEN.balanceOf(ICEQUEEN_ADDR)
+	const totalStakedSNOBAVAX = await SNOB_AVAX_TOKEN.balanceOf(ICEQUEEN_ADDR)
+
+	const userPool4Percent = (stakedPool4.amount / 1e18)/(totalStakedSPGLETH / 1e18)*100
+	const userPool3Percent = (stakedPool3.amount / 1e18)/(totalStakedSPGLPNG / 1e18)*100
+	const userPool2Percent = (stakedPool2.amount / 1e18)/(totalStakedSNOBAVAX / 1e18)*100
+	const userPool1Percent = (stakedPool1.amount / 1e18)/(totalStakedSPGLSUSHI / 1e18)*100
+
+	const pool4weight = 0.125
+	const pool3weight = 0.25
+	const pool2weight = 0.5
+	const pool1weight = 0.125
+
+	let res = null;
+    let pool4tvl = null;
+	let pool3tvl = null;
+	let pool2tvl = null;
+	let pool1tvl = null;
+    let pool4tvlDisplay = '';
+	let pool3tvlDisplay = '';
+	let pool2tvlDisplay = '';
+	let pool1tvlDisplay = '';
+    let pool4APR = null;
+	let pool3APR = null;
+	let pool2APR = null;
+	let pool1APR = null;
+	try {
+		res = await $.ajax({
+	      url: 'https://d2vq5imxja288v.cloudfront.net/total_value_locked.json',
+	      type: 'GET',
+	    })
+    	if (res && res.pairs) {
+    		res.pairs.forEach( p => {
+    			if (p.token1.symbol == 'sushi') {
+    				pool1tvl = p.locked_value;
+    				pool1tvlDisplay = `$${p.locked_value}`
+    				pool1APR = snowballsPerBlock * pool1weight / 1e18 * 15000 * snobPrice / p.locked_value * 100
+    			} else if (p.token1.symbol == 'snob') {
+    				pool2tvl = p.locked_value;
+    				pool2tvlDisplay = `$${p.locked_value}`
+    				pool2APR = snowballsPerBlock * pool2weight / 1e18 * 15000 * snobPrice / p.locked_value * 100
+    			} else if (p.token1.symbol == 'png') {
+    				pool3tvl = p.locked_value;
+    				pool3tvlDisplay = `$${p.locked_value}`
+    				pool3APR = snowballsPerBlock * pool3weight / 1e18 * 15000 * snobPrice / p.locked_value * 100
+    			} else if (p.token1.symbol == 'eth') {
+    				pool4tvl = p.locked_value;
+    				pool4tvlDisplay = `$${p.locked_value}`
+    				pool4APR = snowballsPerBlock * pool4weight / 1e18 * 15000 * snobPrice / p.locked_value * 100
+    			}
+    		});
+		}
+	}
+	catch(e) {
+	  console.log('could not get tvl');
+	}
 
 	// APR
 	const PngStakingContracts= [
@@ -310,178 +346,97 @@ $(function() {
 	const link_apr = apr_array[3]
 	const usdt_apr = apr_array[4]
 
-	// APY = P(1 + r/n)nt
-	let compounds_per_year = ETH_AVAX_COMPOUNDS * 365
-	let eth_r = eth_apr.yearlyAPR/100
-	let eth_annual_apy = 100*(1 + eth_r/compounds_per_year)**compounds_per_year
-	let png_r = png_apr.yearlyAPR/100
-	let png_annual_apy = 100*(1 + png_r/compounds_per_year)**compounds_per_year
-	let sushi_r = sushi_apr.yearlyAPR/100
-	let sushi_annual_apy = 100*(1 + sushi_r/compounds_per_year)**compounds_per_year
-	let link_r = link_apr.yearlyAPR/100
-	let link_annual_apy = 100*(1 + link_r/compounds_per_year)**compounds_per_year
-	let usdt_r = usdt_apr.yearlyAPR/100
-	let usdt_annual_apy = 100*(1 + usdt_r/compounds_per_year)**compounds_per_year
-
-    //Contracts
-    const LINK_CONTRACT = new ethers.Contract(SNOWGLOBE_LINK_ADDR, SNOWGLOBE_ABI, signer)
-	const totalDepositedLINKAVAX = await LINK_CONTRACT.totalSupply()
-    const userLinkDeposited = await LINK_CONTRACT.balanceOf(App.YOUR_ADDRESS)
-	const userLinkPoolPercent = (userLinkDeposited / 1e18)/(totalDepositedLINKAVAX / 1e18)*100
-
-    const USDT_CONTRACT = new ethers.Contract(SNOWGLOBE_USDT_ADDR, SNOWGLOBE_ABI, signer)
-	const totalDepositedUSDTAVAX = await USDT_CONTRACT.totalSupply()
-    const userUsdtDeposited = await USDT_CONTRACT.balanceOf(App.YOUR_ADDRESS)
-	const userUsdtPoolPercent = (userUsdtDeposited / 1e18)/(totalDepositedUSDTAVAX / 1e18)*100
-
-	_print(`<a href='${USDT_AVAX_POOL_URL}' target='_blank'>AVAX-USDT Pangolin LP - New! 🌟</a>`)
-	_print(`<a href='${USDT_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
-    _print(`APR: Day ${usdt_apr.dailyAPR.toFixed(2)}% Week ${usdt_apr.weeklyAPR.toFixed(2)}% Year ${link_apr.yearlyAPR.toFixed(2)}%`);
-    _print(`APY (compounding): ${link_annual_apy.toFixed(2)}%`);
-	_print(`Last Harvest: ${USDT_AVAX_HARVEST}`)
-	_print(`Total pool size: ${totalDepositedUSDTAVAX / 1e18}`)
-	_print(`Your % of pool: ${userUsdtPoolPercent}`)
-	_print(`PGL Available to deposit: ${currentUSDTAVAXTokens / 1e18}`)
-	_print(`sPGL Available to withdraw: ${spglUsdtDisplayAmt}`)
-	_print_link(`Approve`, approveUSDT)
-	_print_link(`Deposit`, stakeUSDT)
-	_print_link(`Withdraw\n`, withdrawUSDT)
-	_print(`<a href='${LINK_AVAX_POOL_URL}' target='_blank'>AVAX-LINK Pangolin LP</a>`)
-	_print(`<a href='${LINK_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
-    _print(`APR: Day ${link_apr.dailyAPR.toFixed(2)}% Week ${link_apr.weeklyAPR.toFixed(2)}% Year ${link_apr.yearlyAPR.toFixed(2)}%`);
-    _print(`APY (compounding): ${link_annual_apy.toFixed(2)}%`);
-	_print(`Last Harvest: ${LINK_AVAX_HARVEST}`)
-	_print(`Total pool size: ${totalDepositedLINKAVAX / 1e18}`)
-	_print(`Your % of pool: ${userLinkPoolPercent}`)
-	_print(`PGL Available to deposit: ${currentLINKAVAXTokens / 1e18}`)
-	_print(`sPGL Available to withdraw: ${spglLinkDisplayAmt}`)
-	_print_link(`Approve`, approveLINK)
-	_print_link(`Deposit`, stakeLINK)
-	_print_link(`Withdraw\n`, withdrawLINK)
-	_print(`<a href='${ETH_AVAX_POOL_URL}' target='_blank'>AVAX-ETH Pangolin LP</a>`)
-    _print(`APR: Day ${eth_apr.dailyAPR.toFixed(2)}% Week ${eth_apr.weeklyAPR.toFixed(2)}% Year ${eth_apr.yearlyAPR.toFixed(2)}%`);
-    _print(`APY (compounding): ${eth_annual_apy.toFixed(2)}%`);
-	_print(`Last Harvest: ${ETH_AVAX_HARVEST}`)
-	_print(`PGL Available to deposit: ${currentETHAVAXTokens / 1e18}`)
-	_print(`sPGL Available to withdraw: ${spglEthDisplayAmt}`)
-	_print_link(`Approve`, approveETH)
-	_print_link(`Deposit`, stakeETH)
-	_print_link(`Withdraw\n`, withdrawETH)
-	_print(`<a href='${PNG_AVAX_POOL_URL}' target='_blank'>AVAX-PNG Pangolin LP</a>`)
-    _print(`APR: Day ${png_apr.dailyAPR.toFixed(2)}% Week ${png_apr.weeklyAPR.toFixed(2)}% Year ${png_apr.yearlyAPR.toFixed(2)}%`);
-    _print(`APY (compounding): ${png_annual_apy.toFixed(2)}%`);
-	_print(`Last Harvest: ${PNG_AVAX_HARVEST} `)
-	_print(`PGL Available to deposit: ${currentPNGAVAXTokens / 1e18}`)
-	_print(`sPGL Available to withdraw: ${spglPngDisplayAmt}`)
-	_print_link(`Approve`, approvePNG)
-	_print_link(`Deposit`, stakePNG)
-	_print_link(`Withdraw\n`, withdrawPNG)
-	_print(`<a href='${SUSHI_AVAX_POOL_URL}' target='_blank'>AVAX-SUSHI Pangolin LP</a>`)
-    _print(`APR: Day ${sushi_apr.dailyAPR.toFixed(2)}% Week ${sushi_apr.weeklyAPR.toFixed(2)}% Year ${sushi_apr.yearlyAPR.toFixed(2)}%`);
-    _print(`APY (compounding): ${sushi_annual_apy.toFixed(2)}%`);
-	_print(`Last Harvest: ${SUSHI_AVAX_HARVEST}`)
-	_print(`PGL Available to deposit: ${currentSUSHIAVAXTokens / 1e18}`)
-	_print(`sPGL Available to withdraw: ${spglSushiDisplayAmt}`)
-	_print_link(`Approve`, approveSUSHI)
-	_print_link(`Deposit`, stakeSUSHI)
-	_print_link(`Withdraw`, withdrawSUSHI)
-	_print(`\n`)
-
-	_print(`<b>PGL vs sPGL</b>`)
-	_print(`When you deposit PGL (Pangolin LP) tokens into a Snowglobe, you will receive sPGL (Snowglobe) tokens`)
-	_print(`When you withdraw sPGL (Snowglobe) tokens, you will recieve PGL (Pangolin LP) tokens`)
-	_print(`sPGL value grows as there are more harvests, which means 1 sPGL is worth more than 1 PGL`)
-	_print(`The amount of PGL tokens withdrawn will be more than you deposited due to compounding from harvests`)
-
- //    const stakedPool1 = await ICEQUEEN_CONTRACT.userInfo(1, App.YOUR_ADDRESS)
- //    const stakedPool2 = await ICEQUEEN_CONTRACT.userInfo(2, App.YOUR_ADDRESS)
-	// const stakedPool3 = await ICEQUEEN_CONTRACT.userInfo(3, App.YOUR_ADDRESS)
-	// const stakedPool4 = await ICEQUEEN_CONTRACT.userInfo(4, App.YOUR_ADDRESS)
-
-	// // Total staked in each pool
-	// const totalStakedSPGLSUSHI = await SPGL_SUSHI_TOKEN.balanceOf(ICEQUEEN_ADDR)
- //    const totalStakedSPGLPNG = await SPGL_PNG_TOKEN.balanceOf(ICEQUEEN_ADDR)
- //    const totalStakedSPGLETH = await SPGL_ETH_TOKEN.balanceOf(ICEQUEEN_ADDR)
-	// const totalStakedSNOBAVAX = await SNOB_AVAX_TOKEN.balanceOf(ICEQUEEN_ADDR)
-
-	// const userPool4Percent = (stakedPool4.amount / 1e18)/(totalStakedSPGLETH / 1e18)*100
-	// const userPool3Percent = (stakedPool3.amount / 1e18)/(totalStakedSPGLPNG / 1e18)*100
-	// const userPool2Percent = (stakedPool2.amount / 1e18)/(totalStakedSNOBAVAX / 1e18)*100
-	// const userPool1Percent = (stakedPool1.amount / 1e18)/(totalStakedSPGLSUSHI / 1e18)*100
-
-	// const pool4weight = 0.125
-	// const pool3weight = 0.25
-	// const pool2weight = 0.5
-	// const pool1weight = 0.125
-
-	// //icequeen
-	// _print(`<b>IceQueen 👸 - Governance </b>`)
-	// _print(`Deposit Snowglobe tokens (sPGL) into IceQueen to receive governance tokens (SNOB)\n`)
-	// _print(`<u>Pool 4 - ETH-AVAX Snowglobe (sPGL)</u>`)
-	// _print(`<a href='${ETH_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
- //    _print(`SNOB allocation weight: ${pool4weight*100}%`)
-	// _print(`Snowballs per block: ${snowballsPerBlock * pool4weight / 1e18}`)
- //    _print(`Total pool size: ${totalStakedSPGLETH / 1e18}`)
- //    _print(`Your % of pool: ${userPool4Percent}%`)
-	// _print(`Your Snowballs per block: ${snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18}`)
-	// _print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18 * 15000}`)
-	// _print(`Estimated gain per day*: $${(snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
-	// _print(`Available to stake: ${spglEthDisplayAmt}`)
-	// _print(`Available to unstake: ${stakedPool4.amount / 1e18}`)
-	// _print(`Pending Snowballs: ${pendingSNOBTokensPool4 / 1e18}`)
-	// _print_link(`Approve`, approveSPGLETH)
-	// _print_link(`Stake`, stakeSPGLETH)
-	// _print_link(`Unstake`, withdrawPool4)
-	// _print_link(`Claim\n`, claimPool4)
-	// _print(`<u>Pool 3 - PNG-AVAX Snowglobe (sPGL)</u>`)
- //    _print(`<a href='${PNG_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
- //    _print(`SNOB allocation weight: ${pool3weight*100}%`)
-	// _print(`Snowballs per block: ${snowballsPerBlock * pool3weight / 1e18}`)
- //    _print(`Total pool size: ${totalStakedSPGLPNG / 1e18}`)
- //    _print(`Your % of pool: ${userPool3Percent}%`)
-	// _print(`Your Snowballs per block: ${snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18}`)
-	// _print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18 * 15000}`)
-	// _print(`Estimated gain per day*: $${(snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
-	// _print(`Available to stake: ${spglPngDisplayAmt}`)
-	// _print(`Available to unstake: ${stakedPool3.amount / 1e18}`)
-	// _print(`Pending Snowballs: ${pendingSNOBTokensPool3 / 1e18}`)
-	// _print_link(`Approve`, approveSPGLPNG)
-	// _print_link(`Stake`, stakeSPGLPNG)
-	// _print_link(`Unstake`, withdrawPool3)
-	// _print_link(`Claim\n`, claimPool3)
-	// _print(`<a href='${SNOB_AVAX_POOL_URL}' target='_blank'>Pool 2 - SNOB-AVAX Pangolin LP</a>`)
- //    _print(`<a href='${SNOB_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
- //    _print(`SNOB allocation weight: ${pool2weight*100}%`)
-	// _print(`Snowballs per block: ${snowballsPerBlock * pool2weight / 1e18}`)
- //    _print(`Total pool size: ${totalStakedSNOBAVAX / 1e18}`)
- //    _print(`Your % of pool: ${userPool2Percent}%`)
-	// _print(`Your Snowballs per block: ${snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18}`)
-	// _print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18 * 15000}`)
-	// _print(`Estimated gain per day*: $${(snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
-	// _print(`Available to stake: ${snobAvaxDisplayAmt}`)
-	// _print(`Available to unstake: ${stakedPool2.amount / 1e18}`)
-	// _print(`Pending Snowballs: ${pendingSNOBTokensPool2 / 1e18}`)
-	// _print_link(`Approve`, approveSNOB)
-	// _print_link(`Stake`, stakeSNOB)
-	// _print_link(`Unstake`, withdrawPool2)
-	// _print_link(`Claim\n`, claimPool2)
-	// _print(`<u>Pool 1 - SUSHI-AVAX Snowglobe (sPGL)</u>`)
- //    _print(`<a href='${SUSHI_AVAX_TVL}' target='_blank'>Total Value Locked</a>`)
- //    _print(`SNOB allocation weight: ${pool1weight*100}%`)
-	// _print(`Snowballs per block: ${snowballsPerBlock * pool1weight / 1e18}`)
- //    _print(`Total pool size: ${totalStakedSPGLSUSHI / 1e18}`)
- //    _print(`Your % of pool: ${userPool1Percent}%`)
-	// _print(`Your Snowballs per block: ${snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18}`)
-	// _print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18 * 15000}`)
-	// _print(`Estimated gain per day*: $${(snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
-	// _print(`Available to stake: ${spglSushiDisplayAmt}`)
-	// _print(`Available to unstake: ${stakedPool1.amount / 1e18}`)
-	// _print(`Pending Snowballs: ${pendingSNOBTokensPool1 / 1e18}`)
-	// _print_link(`Approve`, approveSPGLSUSHI)
-	// _print_link(`Stake`, stakeSPGLSUSHI)
-	// _print_link(`Unstake`, withdrawPool1)
-	// _print_link(`Claim\n`, claimPool1)
-	// _print(`*Estimates based on an average of 15,000 blocks per day\n`)
+	//icequeen
+	_print(`<b>IceQueen 👸 - Governance </b>`)
+	_print(`Deposit Snowglobe tokens (sPGL) into IceQueen to receive governance tokens (SNOB)\n`)
+	_print(`<u>Pool 4 - ETH-AVAX Snowglobe (sPGL)</u>`)
+	_print(`<a href='${ETH_AVAX_TVL}' target='_blank'>Total Value Locked ${pool4tvlDisplay}</a>`)
+	if (pool4APR) {
+		let combinedAPR = pool4APR + eth_apr.dailyAPR
+		_print(`Estimated APR*: Day ${pool4APR.toFixed(2)}% Week ${(pool4APR * 7).toFixed(2)}% Year ${(pool4APR * 365).toFixed(2)}%`)
+		_print(`Combined APR**: Day ${combinedAPR.toFixed(2)}% Week ${(combinedAPR * 7).toFixed(2)}% Year ${(combinedAPR * 365).toFixed(2)}%`)
+	}
+    _print(`SNOB allocation weight: ${pool4weight*100}%`)
+	_print(`Snowballs per block: ${snowballsPerBlock * pool4weight / 1e18}`)
+	_print(`Snowballs per day: ${snowballsPerBlock * pool4weight / 1e18 * 15000}`)
+    _print(`Total pool size: ${totalStakedSPGLETH / 1e18}`)
+    _print(`Your % of pool: ${userPool4Percent}%`)
+	_print(`Your Snowballs per block: ${snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18}`)
+	_print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18 * 15000}`)
+	_print(`Estimated gain per day*: $${(snowballsPerBlock * pool4weight * userPool4Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
+	_print(`Available to stake: ${spglEthDisplayAmt}`)
+	_print(`Available to unstake: ${stakedPool4.amount / 1e18}`)
+	_print(`Pending Snowballs: ${pendingSNOBTokensPool4 / 1e18}`)
+	_print_link(`Approve`, approveSPGLETH)
+	_print_link(`Stake`, stakeSPGLETH)
+	_print_link(`Unstake`, withdrawPool4)
+	_print_link(`Claim\n`, claimPool4)
+	_print(`<u>Pool 3 - PNG-AVAX Snowglobe (sPGL)</u>`)
+    _print(`<a href='${PNG_AVAX_TVL}' target='_blank'>Total Value Locked ${pool3tvlDisplay}</a>`)
+	if (pool3APR) {
+		let combinedAPR = pool3APR + png_apr.dailyAPR
+		_print(`Estimated APR*: Day ${pool3APR.toFixed(2)}% Week ${(pool3APR * 7).toFixed(2)}% Year ${(pool3APR * 365).toFixed(2)}%`)
+		_print(`Combined APR**: Day ${combinedAPR.toFixed(2)}% Week ${(combinedAPR * 7).toFixed(2)}% Year ${(combinedAPR * 365).toFixed(2)}%`)
+	}
+    _print(`SNOB allocation weight: ${pool3weight*100}%`)
+	_print(`Snowballs per block: ${snowballsPerBlock * pool3weight / 1e18}`)
+	_print(`Snowballs per day: ${snowballsPerBlock * pool3weight / 1e18 * 15000}`)
+    _print(`Total pool size: ${totalStakedSPGLPNG / 1e18}`)
+    _print(`Your % of pool: ${userPool3Percent}%`)
+	_print(`Your Snowballs per block: ${snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18}`)
+	_print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18 * 15000}`)
+	_print(`Estimated gain per day*: $${(snowballsPerBlock * pool3weight * userPool3Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
+	_print(`Available to stake: ${spglPngDisplayAmt}`)
+	_print(`Available to unstake: ${stakedPool3.amount / 1e18}`)
+	_print(`Pending Snowballs: ${pendingSNOBTokensPool3 / 1e18}`)
+	_print_link(`Approve`, approveSPGLPNG)
+	_print_link(`Stake`, stakeSPGLPNG)
+	_print_link(`Unstake`, withdrawPool3)
+	_print_link(`Claim\n`, claimPool3)
+	_print(`<a href='${SNOB_AVAX_POOL_URL}' target='_blank'>Pool 2 - SNOB-AVAX Pangolin LP</a>`)
+    _print(`<a href='${SNOB_AVAX_TVL}' target='_blank'>Total Value Locked ${pool2tvlDisplay}</a>`)
+	if (pool2APR) {
+		_print(`Estimated APR*: Day ${pool2APR.toFixed(2)}% Week ${(pool2APR * 7).toFixed(2)}% Year ${(pool2APR * 365).toFixed(2)}%`)
+	}
+    _print(`SNOB allocation weight: ${pool2weight*100}%`)
+	_print(`Snowballs per block: ${snowballsPerBlock * pool2weight / 1e18}`)
+	_print(`Snowballs per day: ${snowballsPerBlock * pool2weight / 1e18 * 15000}`)
+    _print(`Total pool size: ${totalStakedSNOBAVAX / 1e18}`)
+    _print(`Your % of pool: ${userPool2Percent}%`)
+	_print(`Your Snowballs per block: ${snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18}`)
+	_print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18 * 15000}`)
+	_print(`Estimated gain per day*: $${(snowballsPerBlock * pool2weight * userPool2Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
+	_print(`Available to stake: ${snobAvaxDisplayAmt}`)
+	_print(`Available to unstake: ${stakedPool2.amount / 1e18}`)
+	_print(`Pending Snowballs: ${pendingSNOBTokensPool2 / 1e18}`)
+	_print_link(`Approve`, approveSNOB)
+	_print_link(`Stake`, stakeSNOB)
+	_print_link(`Unstake`, withdrawPool2)
+	_print_link(`Claim\n`, claimPool2)
+	_print(`<u>Pool 1 - SUSHI-AVAX Snowglobe (sPGL)</u>`)
+    _print(`<a href='${SUSHI_AVAX_TVL}' target='_blank'>Total Value Locked ${pool1tvlDisplay}</a>`)
+	if (pool1APR) {
+		let combinedAPR = pool1APR + sushi_apr.dailyAPR
+		_print(`Estimated APR*: Day ${pool1APR.toFixed(2)}% Week ${(pool1APR * 7).toFixed(2)}% Year ${(pool1APR * 365).toFixed(2)}%`)
+		_print(`Combined APR**: Day ${combinedAPR.toFixed(2)}% Week ${(combinedAPR * 7).toFixed(2)}% Year ${(combinedAPR * 365).toFixed(2)}%`)
+	}
+    _print(`SNOB allocation weight: ${pool1weight*100}%`)
+	_print(`Snowballs per block: ${snowballsPerBlock * pool1weight / 1e18}`)
+	_print(`Snowballs per day: ${snowballsPerBlock * pool1weight / 1e18 * 15000}`)
+    _print(`Total pool size: ${totalStakedSPGLSUSHI / 1e18}`)
+    _print(`Your % of pool: ${userPool1Percent}%`)
+	_print(`Your Snowballs per block: ${snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18}`)
+	_print(`Estimated Snowballs per day*: ${snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18 * 15000}`)
+	_print(`Estimated gain per day*: $${(snowballsPerBlock * pool1weight * userPool1Percent / 100 / 1e18 * 15000 * snobPrice).toFixed(2)}`)
+	_print(`Available to stake: ${spglSushiDisplayAmt}`)
+	_print(`Available to unstake: ${stakedPool1.amount / 1e18}`)
+	_print(`Pending Snowballs: ${pendingSNOBTokensPool1 / 1e18}`)
+	_print_link(`Approve`, approveSPGLSUSHI)
+	_print_link(`Stake`, stakeSPGLSUSHI)
+	_print_link(`Unstake`, withdrawPool1)
+	_print_link(`Claim\n`, claimPool1)
+	_print(`*Estimates based on an average of 15,000 blocks per day`)
+	_print(`**Combined APR includes the APR earned from Snowglobe\n`)
 
 
     hideLoading();
