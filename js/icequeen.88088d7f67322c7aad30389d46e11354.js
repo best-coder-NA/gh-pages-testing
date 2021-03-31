@@ -240,9 +240,9 @@ async function main() {
   const snowballsPerBlock = snowballMultiplier * blockRate
   const blockNumber = await App.provider.getBlockNumber();
   const currentBlock = await App.provider.getBlock(blockNumber);
-  const yesterdayBlock = await App.provider.getBlock(blockNumber - 20000);
+  const yesterdayBlock = await App.provider.getBlock(blockNumber - 15000);
   const secondsInDay = 86400;
-  const blocks24hrs = (secondsInDay / (currentBlock.timestamp - yesterdayBlock.timestamp)) * 20000;
+  const blocks24hrs = (secondsInDay / (currentBlock.timestamp - yesterdayBlock.timestamp)) * 15000;
 
   const prices = await getAvaxPrices();
   const snobPrice = prices['0xC38f41A296A4493Ff429F1238e030924A1542e50'] ? prices['0xC38f41A296A4493Ff429F1238e030924A1542e50'].usd : 0;
@@ -327,12 +327,14 @@ async function main() {
   const totalStakedS3D = await S3D_TOKEN.balanceOf(ICEQUEEN_ADDR)
 
   const userPool7Percent = (stakedPool7.amount / 1e18) / (totalStakedS3D / 1e18) * 100
-  const userPool6Percent = (stakedPool6.amount / 1e18) / (totalStakedSPGLUSDT / 1e18) * 100
+  const userPool6Percent = (stakedPool6.amount / 1e18) / (totalStakedSPGLLINK / 1e18) * 100
   const userPool5Percent = (stakedPool5.amount / 1e18) / (totalStakedSPGLUSDT / 1e18) * 100
   const userPool4Percent = (stakedPool4.amount / 1e18) / (totalStakedSPGLETH / 1e18) * 100
   const userPool3Percent = (stakedPool3.amount / 1e18) / (totalStakedSPGLPNG / 1e18) * 100
   const userPool2Percent = (stakedPool2.amount / 1e18) / (totalStakedSNOBAVAX / 1e18) * 100
   const userPool1Percent = (stakedPool1.amount / 1e18) / (totalStakedSPGLSUSHI / 1e18) * 100
+
+  const poolShareDisplay_7 = `Your pool share is <b>${(stakedPool7.amount / 1e18).toFixed(6)}</b> S3D - <b>${userPool7Percent.toFixed(6)}%</b>`;
 
   const pool7weight = 0.20
   const pool6weight = 0.08
@@ -587,7 +589,7 @@ async function main() {
       const token0ValueUSDT_5 = reserve0Owned_5 * t0Price_5;
       const token1ValueUSDT_5 = reserve1Owned_5 * t1Price_5;
       const value_5 = token0ValueUSDT_5 + (token1ValueUSDT_5);
-      poolShareDisplay_5 = `Your pool share is <b>${userSPGL_5.toFixed(6)}</b> sPGL (<b>${ownedPGL_5.toFixed(6)}</b> PGL) - <b>${userPool5Percent.toFixed(6)}%</b>`
+      poolShareDisplay_5 = `Your pool share is <b>${userSPGL_5.toFixed(8)}</b> sPGL (<b>${ownedPGL_5.toFixed(8)}</b> PGL) - <b>${userPool5Percent.toFixed(6)}%</b>`
       stakeDisplay_5 = `Your LP Value is <b>${reserve0Owned_5.toFixed(6)}</b> ${TOKEN_NAMES[token0Address_5]} / <b>${reserve1Owned_5.toFixed(6)}</b> ${TOKEN_NAMES[token1Address_5]} ($<b>${value_5.toFixed(2)}</b>)***</b>`
     }
   } catch { console.log('error calculating PGL value')}
@@ -607,7 +609,7 @@ async function main() {
       totalSupplyPGL_6 = totalSupplyPGL_6 / 1e18;
       const reserves_6 = await pglContract_6.getReserves();
       const r0_6 = reserves_6._reserve0 / 1e18
-      const r1_6 = reserves_6._reserve1 / 1e6
+      const r1_6 = reserves_6._reserve1 / 1e18
       let reserve0Owned_6 = ownedPGL_6 * (r0_6) / (totalSupplyPGL_6);
       let reserve1Owned_6 = ownedPGL_6 * (r1_6) / (totalSupplyPGL_6);
       const token0Address_6 = await pglContract_6.token0();
@@ -754,7 +756,7 @@ async function main() {
     tvl: null,
     pool_weight: pool7weight,
     total_staked: totalStakedS3D,
-    user_pool_percent: 0,
+    user_pool_percent: userPool7Percent,
     staked_pool: stakedPool7,
     pending_tokens: pendingSNOBTokensPool7,
     display_amount: S3DDisplayAmt,
@@ -766,7 +768,7 @@ async function main() {
     snowglobe_apr: null,
     tvl_display: pool7tvlDisplay,
     total_pgl: null,
-    pool_share_display: '',
+    pool_share_display: poolShareDisplay_7,
     stake_display: ''
   })
   pool({
@@ -776,7 +778,7 @@ async function main() {
     tvl: LINK_AVAX_TVL,
     pool_weight: pool6weight,
     total_staked: totalStakedSPGLLINK,
-    user_pool_percent: 0,
+    user_pool_percent: userPool6Percent,
     staked_pool: stakedPool6,
     pending_tokens: pendingSNOBTokensPool6,
     display_amount: spglLinkDisplayAmt,
@@ -788,8 +790,8 @@ async function main() {
     snowglobe_apr: link_apr.dailyAPR,
     tvl_display: pool6tvlDisplay,
     total_pgl: null,
-    pool_share_display: '',
-    stake_display: ''
+    pool_share_display: poolShareDisplay_6,
+    stake_display: stakeDisplay_6
   })
   pool({
     pool_nickname: '(Pool 5)',
