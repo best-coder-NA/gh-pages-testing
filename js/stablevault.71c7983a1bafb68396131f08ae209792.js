@@ -108,6 +108,8 @@ async function main() {
   const s3_supply_percentage = (s3_supply / 1e18 / combined_supply * 100) || 0;
   const S3D_supply = await S3D_TOKEN.totalSupply();
   const user_percentage = ((S3D_balance / 1e18) / (S3D_supply / 1e18) * 100) || 0;
+  const S3D_ratio = combined_supply / (S3D_supply / 1e18);
+  console.log("S3D_ratio:", S3D_ratio);
 
   const t1_supply_display = new Intl.NumberFormat('en-US').format((s1_supply / 1e6).toFixed(2));
   const t2_supply_display = new Intl.NumberFormat('en-US').format((s2_supply / 1e18).toFixed(2));
@@ -196,7 +198,7 @@ async function main() {
   }
 
   $("#deposit_btn").click(function(){
-    loadDepositModal(TUNDRA_CONTRACT, App);
+    loadDepositModal(TUNDRA_CONTRACT, App, S3D_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS);
     $("#deposit_confirm_btn").prop('disabled', false);
   });
   $("#deposit_confirm_btn").click(function(){
@@ -297,6 +299,26 @@ async function main() {
   $("#token_3_max").click(function(){
     $("#token_3_input").val(s3_balance_formatted);
   });
+
+  // $("#remove_liquidity_btn").click(function(){
+  //   $("#add_liquidity_text").hide();
+  //   $("#add_liquidity_card").hide();
+  //   $("#remove_liquidity_btn").hide();
+  //
+  //   $("#add_liquidity_btn").show();
+  //   $("#remove_liquidity_text").show();
+  //   $("#remove_liquidity_card").show();
+  // });
+  //
+  // $("#add_liquidity_btn").click(function(){
+  //   $("#add_liquidity_text").show();
+  //   $("#add_liquidity_card").show();
+  //   $("#remove_liquidity_btn").show();
+  //
+  //   $("#add_liquidity_btn").hide();
+  //   $("#remove_liquidity_text").hide();
+  //   $("#remove_liquidity_card").hide();
+  // });
 
   loadEvents(App, TUNDRA_CONTRACT);
 
@@ -553,7 +575,7 @@ const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3D_TOKEN, App){
   console.log("calculateRemoveLiquidity: ", withdrawAmount);
 }
 
-const loadDepositModal = async function(TUNDRA_CONTRACT, App){
+const loadDepositModal = async function(TUNDRA_CONTRACT, App, S3D_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS){
   $("#deposit_confirm_btn").show();
   $("#deposit_success").hide();
   // inputs
@@ -568,13 +590,15 @@ const loadDepositModal = async function(TUNDRA_CONTRACT, App){
   const s2_amount = ethers.BigNumber.from(String(Math.round(s2_input * 1000)) + "0".repeat(15));
   const s3_amount = ethers.BigNumber.from(String(Math.round(s3_input * 1000)) + "0".repeat(15));
 
+  console.log("S3D_ratio deposit modal:", S3D_ratio);
+
   // recieving
   const minToMint = await TUNDRA_CONTRACT.calculateTokenAmount(App.YOUR_ADDRESS, [s1_amount, s2_amount, s3_amount], true)
   $("#receiving_amt").html((minToMint / 1e18).toFixed(6));
 
   // premium & fee
   const totalAmount = Number(s1_input) + Number(s2_input) + Number(s3_input)
-  const difference = minToMint / 1e18 - totalAmount;
+  const difference = (minToMint / 1e18 * (S3D_ratio || 1)) - totalAmount;
   const premium = (totalAmount > 0 ? difference / totalAmount : 0);
   console.log("Difference:", (difference).toFixed(8));
   console.log("Premium:", (premium * 100).toFixed(6));
@@ -591,6 +615,18 @@ const loadDepositModal = async function(TUNDRA_CONTRACT, App){
 
   const slippage = getSlippage();
   $("#max_slippage").html(slippage);
+
+  // allowances
+  const s1_allowance = await STABLE_1_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
+  const s2_allowance = await STABLE_2_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
+  const s3_allowance = await STABLE_3_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
+  const s1_valid = s1_amount > 0 ? s1_allowance > 0 : true;
+  const s2_valid = s2_amount > 0 ? s2_allowance > 0 : true;
+  const s3_valid = s3_amount > 0 ? s3_allowance > 0 : true;
+  if (!s1_valid || !s2_valid || !s3_valid) {
+    $("#deposit_approvals_needed").show();
+    $("#deposit_confirm_btn").hide();
+  }
 }
 
 function getSwapSlippage() {

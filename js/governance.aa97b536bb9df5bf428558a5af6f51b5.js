@@ -53,10 +53,12 @@ async function main() {
   // balances
   const SNOB_TOKEN = new ethers.Contract(SNOB_ADDRESS, ERC20_ABI, signer)
   const currentSNOBTokens = await SNOB_TOKEN.balanceOf(App.YOUR_ADDRESS)
-  $("#available_snob").html((currentSNOBTokens / 1e18).toLocaleString())
+  const currentSNOBTokens_formatted = currentSNOBTokens/1e18 > .001 ? (currentSNOBTokens/1e18 - .001).toFixed(3) : 0;
+  $("#available_snob").html((currentSNOBTokens_formatted).toLocaleString())
   const PGL_TOKEN = new ethers.Contract(PGL_ADDRESS, ERC20_ABI, signer)
   const currentPGLTokens = await PGL_TOKEN.balanceOf(App.YOUR_ADDRESS)
-  $("#available_pgl").html((currentPGLTokens / 1e18).toLocaleString())
+  const currentPGLTokens_formatted = currentPGLTokens/1e18 > .001 ? (currentPGLTokens/1e18 - .001).toFixed(3) : 0;
+  $("#available_pgl").html((currentPGLTokens_formatted).toLocaleString())
 
   //votes
   const CRYSTAL_CONTRACT = new ethers.Contract(CRYSTAL_VAULT_ADDRESS, CRYSTAL_VAULT_ABI, signer);
@@ -154,7 +156,7 @@ async function main() {
     proposal_html += `<div class="ml-20"><span>Start: ${startDate} </span></div>`
     proposal_html += `<div class="ml-20"><span>End: ${endDate}</span></div>`
     if (state == 0) {
-      proposal_html += `<div class="ml-20"><span>Votes needed for Quorum: ${quorumVotes * 1}</span></div>`
+      proposal_html += `<div class="ml-20"><span>Votes needed for Quorum: ${quorumVotes / 1e18}</span></div>`
     }
     proposal_html += `<div class="ml-20">Proposer: ${proposal.proposer}</div>`
     proposal_html += `</div>`;
@@ -164,10 +166,10 @@ async function main() {
     console.log("i", i);
     $(`#proposal_${i}_for`).click(function(){
       console.log("iclick", i);
-      governanceContract_voteFor(GOVERNANCE_ABI, GOVERNANCE_ADDRESS, i, App)
+      governanceContract_voteFor(GOVERNANCE_ABI, GOVERNANCE_ADDRESS, i, App, CRYSTAL_CONTRACT)
     });
     $(`#proposal_${i}_against`).click(function(){
-      governanceContract_voteAgainst(GOVERNANCE_ABI, GOVERNANCE_ADDRESS, i, App)
+      governanceContract_voteAgainst(GOVERNANCE_ABI, GOVERNANCE_ADDRESS, i, App, CRYSTAL_CONTRACT)
     });
   }
 
@@ -187,12 +189,11 @@ async function main() {
   }
 
   // Max
-  // TODO fix decimals bug
   $("#snob_max").click(function(){
-    $("#snob_input").val(currentSNOBTokens / 1e18)
+    $("#snob_input").val(currentSNOBTokens_formatted)
   })
   $("#pgl_max").click(function(){
-    $("#pgl_input").val(currentPGLTokens / 1e18)
+    $("#pgl_input").val(currentPGLTokens_formatted)
   })
 
   //
@@ -373,11 +374,12 @@ const crystalVaultContract_withdraw = async function (chefAbi, chefAddress, App)
   }
 }
 
-const governanceContract_voteFor = async function (chefAbi, chefAddress, proposal_id, App) {
+const governanceContract_voteFor = async function (chefAbi, chefAddress, proposal_id, App, crystalContract) {
   const signer = App.provider.getSigner()
   console.log(signer)
 
   const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
+  const qVotes = await crystalContract.quadraticVotes(App.YOUR_ADDRESS);
 
   // //balance
   // const votes = await CHEF_CONTRACT.votes(App.YOUR_ADDRESS)
@@ -385,7 +387,7 @@ const governanceContract_voteFor = async function (chefAbi, chefAddress, proposa
   let allow = Promise.resolve()
 
   showLoading()
-  if (1 == 0) {
+  if (qVotes == 0) {
     alert('No votes to use')
     hideLoading();
   } else {
@@ -410,11 +412,12 @@ const governanceContract_voteFor = async function (chefAbi, chefAddress, proposa
   }
 }
 
-const governanceContract_voteAgainst = async function (chefAbi, chefAddress, proposal_id, App) {
+const governanceContract_voteAgainst = async function (chefAbi, chefAddress, proposal_id, App, crystalContract) {
   const signer = App.provider.getSigner()
   console.log(signer)
 
   const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
+  const qVotes = await crystalContract.quadraticVotes(App.YOUR_ADDRESS);
 
   // //balance
   // const votes = await CHEF_CONTRACT.votes(App.YOUR_ADDRESS)
@@ -422,7 +425,7 @@ const governanceContract_voteAgainst = async function (chefAbi, chefAddress, pro
   let allow = Promise.resolve()
 
   showLoading()
-  if (1 == 0) {
+  if (qVotes == 0) {
     alert('No votes to use')
     hideLoading();
   } else {
