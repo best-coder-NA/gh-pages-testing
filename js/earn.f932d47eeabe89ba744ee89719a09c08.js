@@ -218,7 +218,7 @@ async function main() {
 
   // wallet info
   const claimableSnowballs = pendingGovReward / 1e18 + pendingSNOBTokensPool1 / 1e18 + pendingSNOBTokensPool2 / 1e18 + pendingSNOBTokensPool3 / 1e18 + pendingSNOBTokensPool4 / 1e18 + pendingSNOBTokensPool5 / 1e18 + pendingSNOBTokensPool6 / 1e18 + pendingSNOBTokensPool7 / 1e18;
-  const snowballsPerBlock = snowballMultiplier * blockRate
+  const snowballsPerBlock = blockRate
   const secondsInDay = 86400;
   
   const blocks24hrs = (secondsInDay / (currentBlock.timestamp - yesterdayBlock.timestamp)) * 20000;
@@ -457,7 +457,7 @@ async function main() {
     </div>`    
   }
 
-  const calculateShare = (snowglobeContract, PAIR_ADDR, userSPGL) => {
+  const calculateShare = (snowglobeContract, PAIR_ADDR, userSPGL, decimals) => {
     let pglContract = new ethers.Contract(PAIR_ADDR, PGL_ABI, signer)
     return Promise.all([
       snowglobeContract ? snowglobeContract.balance() : Promise.resolve(0), 
@@ -475,7 +475,7 @@ async function main() {
       let token1Address = res[5]
       let ownedPGL = userSPGL * (totalPoolPGL / 1e18) / (totalSPGL / 1e18);        
       const r0 = reserves._reserve0 / 1e18
-      const r1 = reserves._reserve1 / 1e18
+      const r1 = reserves._reserve1 / decimals
       let reserve0Owned = ownedPGL * (r0) / (totalSupplyPGL);
       let reserve1Owned = ownedPGL * (r1) / (totalSupplyPGL);
       const t0Price = prices[token0Address] ? prices[token0Address].usd : 0
@@ -502,7 +502,7 @@ async function main() {
   const snowglobeContract_1 = new ethers.Contract(SNOWGLOBE_SUSHI_ADDR, SNOWGLOBE_ABI, signer);
   let poolShareDisplay_1, poolShareDisplay_1_pgl, stakeDisplay_1, totalPoolPGL_1;
   if (stakedPool1.amount / 1e18 > 0) {
-    let ret_1 = await calculateShare(snowglobeContract_1, SUSHI_AVAX_ADDR, stakedPool1.amount / 1e18)
+    let ret_1 = await calculateShare(snowglobeContract_1, SUSHI_AVAX_ADDR, stakedPool1.amount / 1e18, 1e18)
     poolShareDisplay_1 = ret_1[0]
     poolShareDisplay_1_pgl = ret_1[1]
     stakeDisplay_1 = ret_1[2]
@@ -511,7 +511,7 @@ async function main() {
     
   let poolShareDisplay_2, poolShareDisplay_2_pgl, stakeDisplay_2, totalPoolPGL_2;
   if (stakedPool2.amount / 1e18 > 0) {
-    let ret_2 = await calculateShare(null, SNOB_AVAX_ADDR, stakedPool2.amount / 1e18)
+    let ret_2 = await calculateShare(null, SNOB_AVAX_ADDR, stakedPool2.amount / 1e18, 1e18)
     poolShareDisplay_2 = ret_2[0]
     poolShareDisplay_2_pgl = ret_2[1]
     stakeDisplay_2 = ret_2[2]
@@ -522,7 +522,7 @@ async function main() {
   const snowglobeContract_3 = new ethers.Contract(SNOWGLOBE_PNG_ADDR, SNOWGLOBE_ABI, signer);
   let poolShareDisplay_3, poolShareDisplay_3_pgl, stakeDisplay_3, totalPoolPGL_3;
   if (stakedPool3.amount / 1e18 > 0) {
-    let ret_3 = await calculateShare(snowglobeContract_3, PNG_AVAX_ADDR, stakedPool3.amount / 1e18)
+    let ret_3 = await calculateShare(snowglobeContract_3, PNG_AVAX_ADDR, stakedPool3.amount / 1e18, 1e18)
     poolShareDisplay_3 = ret_3[0]
     poolShareDisplay_3_pgl = ret_3[1]
     stakeDisplay_3 = ret_3[2]
@@ -533,7 +533,7 @@ async function main() {
   const snowglobeContract_4 = new ethers.Contract(SNOWGLOBE_ETH_ADDR, SNOWGLOBE_ABI, signer);
   let poolShareDisplay_4, poolShareDisplay_4_pgl, stakeDisplay_4, totalPoolPGL_4;
   if (stakedPool4.amount / 1e18 > 0) {
-    let ret_4 = await calculateShare(snowglobeContract_4, ETH_AVAX_ADDR, stakedPool4.amount / 1e18)
+    let ret_4 = await calculateShare(snowglobeContract_4, ETH_AVAX_ADDR, stakedPool4.amount / 1e18, 1e18)
     poolShareDisplay_4 = ret_4[0]
     poolShareDisplay_4_pgl = ret_4[1]
     stakeDisplay_4 = ret_4[2]
@@ -544,7 +544,7 @@ async function main() {
   const snowglobeContract_5 = new ethers.Contract(SNOWGLOBE_USDT_ADDR, SNOWGLOBE_ABI, signer);
   let poolShareDisplay_5, poolShareDisplay_5_pgl, stakeDisplay_5, totalPoolPGL_5;
   if (stakedPool5.amount / 1e18 > 0) {
-    let ret_5 = await calculateShare(snowglobeContract_5, USDT_AVAX_ADDR, stakedPool5.amount / 1e18)
+    let ret_5 = await calculateShare(snowglobeContract_5, USDT_AVAX_ADDR, stakedPool5.amount / 1e18, 1e6)
     poolShareDisplay_5 = ret_5[0]
     poolShareDisplay_5_pgl = ret_5[1]
     stakeDisplay_5 = ret_5[2]
@@ -555,7 +555,7 @@ async function main() {
   const snowglobeContract_6 = new ethers.Contract(SNOWGLOBE_USDT_ADDR, SNOWGLOBE_ABI, signer);
   let poolShareDisplay_6, poolShareDisplay_6_pgl, stakeDisplay_6, totalPoolPGL_6;
   if (stakedPool6.amount / 1e18 > 0) {
-    let ret_6 = await calculateShare(snowglobeContract_6, USDT_AVAX_ADDR, stakedPool6.amount / 1e18)
+    let ret_6 = await calculateShare(snowglobeContract_6, USDT_AVAX_ADDR, stakedPool6.amount / 1e18, 1e18)
     poolShareDisplay_6 = ret_6[0]
     poolShareDisplay_6_pgl = ret_6[1]
     stakeDisplay_6 = ret_6[2]
