@@ -17,6 +17,12 @@ $(function () {
   consoleInit();
   start(main);
 });
+
+function pairmatch(p, t0, t1) {
+  return ( p.token0.symbol.toLowerCase() == t0.toLowerCase() || p.token1.symbol.toLowerCase() == t0.toLowerCase() ) && 
+         ( p.token0.symbol.toLowerCase() == t1.toLowerCase() || p.token1.symbol.toLowerCase() == t1.toLowerCase() )
+}
+
 async function main() {
   const App = await init_ethers();
   //ABIs
@@ -354,38 +360,40 @@ async function main() {
 
   try {
     res = await $.ajax({
-      url: 'https://x-api.snowball.network/tvl/snob.json',
+      url: 'https://x-api.snowball.network/dex/0xc38f41a296a4493ff429f1238e030924a1542e50/tvl.json',
       type: 'GET',
     })
     if (res && res.pairs && res.locked) {
+
       res.pairs.forEach( p => {
-        if (p.token1.symbol.toLowerCase() == 'sushi') {
-          pool1tvl = p.locked;
-          pool1tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
-          pool1APR = snowballsPerBlock * pool1weight / 1e18 * 15000 * snobPrice / p.locked * 100;
-        } else if (p.token1.symbol.toLowerCase() == 'snob') {
-          pool2tvl = p.locked;
-          pool2tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`          
-          pool2APR = snowballsPerBlock * pool2weight / 1e18 * 15000 * snobPrice / p.locked * 100;
-        } else if (p.token1.symbol.toLowerCase() == 'png') {
-          pool3tvl = p.locked;
-          pool3tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
-          pool3APR = snowballsPerBlock * pool3weight / 1e18 * 15000 * snobPrice / p.locked * 100;
-        } else if (p.token1.symbol.toLowerCase() == 'eth') {
-          pool4tvl = p.locked;
-          pool4tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
-          pool4APR = snowballsPerBlock * pool4weight / 1e18 * 15000 * snobPrice / p.locked * 100;
-        } else if (p.token1.symbol.toLowerCase() == 'usdt') {
+        if ( pairmatch(p, 'usdt', 'wavax') ) {
           pool5tvl = p.locked;
           pool5tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
           pool5APR = snowballsPerBlock * pool5weight / 1e18 * 15000 * snobPrice / p.locked * 100;
-        } else if (p.token1.symbol.toLowerCase() == 'link') {
+        } else if ( pairmatch(p, 'link', 'wavax') ) {
           pool6tvl = p.locked;
           pool6tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
           pool6APR = snowballsPerBlock * pool6weight / 1e18 * 15000 * snobPrice / p.locked * 100;
+        } else if ( pairmatch(p, 'sushi', 'wavax') ) {
+          pool1tvl = p.locked;
+          pool1tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
+          pool1APR = snowballsPerBlock * pool1weight / 1e18 * 15000 * snobPrice / p.locked * 100;
+        } else if ( pairmatch(p, 'png', 'wavax') ) {
+          pool3tvl = p.locked;
+          pool3tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
+          pool3APR = snowballsPerBlock * pool3weight / 1e18 * 15000 * snobPrice / p.locked * 100;
+        } else if ( pairmatch(p, 'eth', 'wavax') ) {
+          pool4tvl = p.locked;
+          pool4tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`
+          pool4APR = snowballsPerBlock * pool4weight / 1e18 * 15000 * snobPrice / p.locked * 100;
+        } else if ( pairmatch(p, 'snob', 'wavax') ) {
+          pool2tvl = p.locked;
+          pool2tvlDisplay = `$${new Intl.NumberFormat('en-US').format(p.locked)}`          
+          pool2APR = snowballsPerBlock * pool2weight / 1e18 * 15000 * snobPrice / p.locked * 100;
         }
       });
-      if ( res.locked > 8000000) {
+
+      if ( res.locked > 6000000) {
         tvl_class = 'tvl-show';
       }      
     }    
@@ -395,19 +403,19 @@ async function main() {
   // APR
   const PngStakingContracts= [
     {
-      stakingRewardAddress: '0xa16381eae6285123c323a665d4d99a6bcfaac307'
+      stakingRewardAddress: '0x417C02150b9a31BcaCb201d1D60967653384E1C6'
     },
     {
-      stakingRewardAddress: '0x8fd2755c6ae7252753361991bdcd6ff55bdc01ce'
+      stakingRewardAddress: '0x574d3245e36Cf8C9dc86430EaDb0fDB2F385F829'
     },
     {
-      stakingRewardAddress: '0x88f26b81c9cae4ea168e31bc6353f493fda29661'
+      stakingRewardAddress: '0xDA354352b03f87F84315eEF20cdD83c49f7E812e'
     },
     {
-      stakingRewardAddress: '0x7d7ecd4d370384b17dfc1b4155a8410e97841b65'
+      stakingRewardAddress: '0xBDa623cDD04d822616A263BF4EdbBCe0B7DC4AE7'
     },
     {
-      stakingRewardAddress: '0x4f019452f51bba0250ec8b69d64282b79fc8bd9f'
+      stakingRewardAddress: '0x94C021845EfE237163831DAC39448cFD371279d6'
     }
   ]
   const tokens = {};
