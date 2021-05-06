@@ -378,7 +378,7 @@ async function main() {
 
   const pool8tvl = totalStakedS3F / 1e18;
   const pool8tvlDisplay = `$${new Intl.NumberFormat('en-US').format(pool8tvl)}`;
-  const pool8APR = (s3FRewardRate || 0) * 86400 / pool8tvl / 1e18;
+  const pool8APR = 2666 * snobPrice / pool8tvl * 100;
   
   const pool7tvl = totalStakedS3D / 1e18;
   const pool7tvlDisplay = `$${new Intl.NumberFormat('en-US').format(pool7tvl)}`;
@@ -712,24 +712,6 @@ async function main() {
                         <h6 class="pl-10 m-0">${options.pool_name}</h6>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-1 align-items-center text-center snob-tvl pb-10 pb-md-0 ${options.tvl_class}">
-                    <p class="m-0 font-size-12"><ion-icon name="lock-closed-outline"></ion-icon> Total Value Locked</p>
-                    <span class="badge font-size-12 px-5 px-sm-10 mx-5">${options.tvl_display}</span>
-                </div>
-                <div class="col-sm-12 col-md-2 d-flex align-items-center pb-10 pb-md-0 mx-auto">
-                    <div class="form-inline w-50 mx-auto">
-                        <div class="form-group m-md-0">
-                            <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                            <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                        </div>
-                    </div>
-                    <div class="form-inline w-50 mx-auto mx-md-0">
-                        <div class="form-group m-md-0">
-                        <p class="m-0 font-size-12 font-weight-regular">${cDayAPR}% </p>
-                        <p class="m-0 font-size-12 font-weight-regular">${cYearAPR}% </p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-sm-12 col-md-3 align-items-center text-center d-flex flex-column snob-tvl pb-10 pb-md-0 mx-auto">
                     <p class="m-0 font-size-12"> Pool Size</p>
                         ${poolSize}
@@ -744,26 +726,6 @@ async function main() {
             </div>
             <div id="details-${options.pool_nickname}" class="border-top mt-20 pt-10 pb-10" style="display: none;">
                 <div class="row">
-                    <div class="col-sm-12 col-md-3 align-items-center pb-10">
-                        <div class="row">
-                            <p class="w-full text-center">Estimated APR :</p>
-                        </div>
-                        <div class="row">
-                            <div class="form-inline w-50 mx-auto">
-                                <div class="form-group m-md-0">
-                                    <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                                    <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                                </div>
-                            </div>
-                            <div class="form-inline w-50 mx-auto">
-                                <div class="form-group m-md-0">
-                                <p class="m-0 font-size-12 font-weight-regular">${eDayAPR}% </p>
-                                <p class="m-0 font-size-12 font-weight-regular">${eYearAPR}%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    ${combinedAprDisplay}
                     <div class="col-sm-12 col-md-3 align-items-center text-center snob-tvl pb-10 pb-md-0">
                         <p class="m-0 font-size-12"><ion-icon name="bowling-ball-outline"></ion-icon> Allocation</p>
                         <span class="badge font-size-12 px-5 px-sm-10 mx-5 font-weight-regular">${ (options.pool_weight * 100)}%</span>
@@ -793,25 +755,6 @@ async function main() {
                         <h6 class="pl-10 m-0">${options.pool_name}</h6>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-1 align-items-center text-center snob-tvl pb-10 pb-md-0 ${options.tvl_class}">
-                    <p class="m-0 font-size-12"><ion-icon name="lock-closed-outline"></ion-icon> Total Value Locked</p>
-                    <span class="badge font-size-12 px-5 px-sm-10 mx-5">${options.tvl_display}</span>
-                </div>
-                <div class="col-sm-12 col-md-2 d-flex align-items-center pb-10 pb-md-0 mx-auto">
-                    <div class="form-inline w-50 mx-auto">
-                        <div class="form-group m-md-0">
-                            <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                            <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                        </div>
-                    </div>
-                    <div class="form-inline w-50 mx-auto mx-md-0">
-                        <div class="form-group m-md-0">
-                        <p class="m-0 font-size-12 font-weight-regular">${cDayAPR}% </p>
-                        <p class="m-0 font-size-12 font-weight-regular">${cYearAPR}%</p>
-                        </div>
-                    </div>
-
-                </div>
                 ${estimatedRate}
                 <div class="col-sm-12 col-md-3 align-items-center text-center text-md-right snob-tvl pb-10 pb-md-0 mx-auto">
                 ${approveBtn}
@@ -827,26 +770,6 @@ async function main() {
 
             <div id="details-${options.pool_nickname}" class="border-top mt-20 pt-10 pb-10" style="display:none">
                 <div class="row">
-                    <div class="col-sm-12 col-md-2 align-items-center pb-10">
-                        <div class="row text-center">
-                            <p class="font-weight-light">Rewards APR :</p>
-                        </div>
-                        <div class="row">
-                            <div class="form-inline w-50 ">
-                                <div class="form-group m-md-0">
-                                    <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                                    <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                                </div>
-                            </div>
-                            <div class="form-inline w-50 mx-auto">
-                                <div class="form-group m-md-0">
-                                <p class="m-0 font-size-12 font-weight-regular">${eDayAPR}% </p>
-                                <p class="m-0 font-size-12 font-weight-regular">${eYearAPR}%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    ${combinedAprDisplay}
                     <div class="col-sm-12 col-md-2 align-items-center text-center snob-tvl pb-10 pb-md-0">
                         <p class="m-0 font-size-12"><ion-icon name="bowling-ball-outline"></ion-icon> Allocation</p>
                         <span class="badge font-size-12 px-5 px-sm-10 mx-5 font-weight-regular">${ (options.pool_weight * 100)}%</span>
@@ -1139,14 +1062,8 @@ async function main() {
 
   }
   function poolS3F(options) {
-    if (options.icequeen_apr) {
-
-      var eDayAPR = `0`;
-      var eWeekAPR = `0`;
-      var eYearAPR = `0`;
-
-      var combinedAprDisplay = ''
-    }
+    var eDayAPR = options.icequeen_apr;
+    var eYearAPR = options.icequeen_apr * 365;
 
     poolSize = '';
     if (options.total_staked) {
@@ -1233,8 +1150,8 @@ async function main() {
                     </div>
                     <div class="form-inline w-50 mx-auto mx-md-0">
                         <div class="form-group m-md-0">
-                        <p class="m-0 font-size-12 font-weight-regular">${"0.00"}% </p>
-                        <p class="m-0 font-size-12 font-weight-regular">${"0.00"}% </p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR.toFixed(2)}% </p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR.toFixed(2)}% </p>
                         </div>
                     </div>
                 </div>
@@ -1265,8 +1182,8 @@ async function main() {
                             </div>
                             <div class="form-inline w-50 mx-auto">
                                 <div class="form-group m-md-0">
-                                <p class="m-0 font-size-12 font-weight-regular">${"0.00"}% </p>
-                                <p class="m-0 font-size-12 font-weight-regular">${"0.00"}%</p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR.toFixed(2)}% </p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR.toFixed(2)}% </p>
                                 </div>
                             </div>
                         </div>
@@ -1314,8 +1231,8 @@ async function main() {
                   </div>
                   <div class="form-inline w-50 mx-auto mx-md-0">
                       <div class="form-group m-md-0">
-                      <p class="m-0 font-size-12 font-weight-regular">${"0.00"}% </p>
-                      <p class="m-0 font-size-12 font-weight-regular">${"0.00"}%</p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR.toFixed(2)}% </p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR.toFixed(2)}% </p>
                       </div>
                   </div>
 
@@ -1348,8 +1265,8 @@ async function main() {
                           </div>
                           <div class="form-inline w-50 mx-auto">
                               <div class="form-group m-md-0">
-                              <p class="m-0 font-size-12 font-weight-regular">${"0.00"}% </p>
-                              <p class="m-0 font-size-12 font-weight-regular">${"0.00"}%</p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR.toFixed(2)}% </p>
+                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR.toFixed(2)}% </p>
                               </div>
                           </div>
                       </div>
@@ -1499,24 +1416,6 @@ async function main() {
                         <h6 class="pl-10 m-0">${options.pool_name}</h6>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-1 align-items-center text-center snob-tvl pb-10 pb-md-0 ${options.tvl_class}">
-                    <p class="m-0 font-size-12"><ion-icon name="lock-closed-outline"></ion-icon> Total Value Locked</p>
-                    <span class="badge font-size-12 px-5 px-sm-10 mx-5">${options.tvl_display}</span>
-                </div>
-                <div class="col-sm-12 col-md-2 d-flex align-items-center pb-10 pb-md-0 mx-auto">
-                    <div class="form-inline w-50 mx-auto">
-                        <div class="form-group m-md-0">
-                            <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                            <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                        </div>
-                    </div>
-                    <div class="form-inline w-50 mx-auto mx-md-0">
-                        <div class="form-group m-md-0">
-                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR}% </p>
-                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR}% </p>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-sm-12 col-md-3 align-items-center text-center d-flex flex-column snob-tvl pb-10 pb-md-0 mx-auto">
                     <p class="m-0 font-size-12"> Pool Size</p>
                         ${poolSize}
@@ -1531,26 +1430,6 @@ async function main() {
             </div>
             <div id="details-${options.pool_nickname}" class="border-top mt-20 pt-10 pb-10" style="display: none;">
                 <div class="row">
-                    <div class="col-sm-12 col-md-3 align-items-center pb-10">
-                        <div class="row">
-                            <p class="w-full text-center">Rewards APR :</p>
-                        </div>
-                        <div class="row">
-                            <div class="form-inline w-50 mx-auto">
-                                <div class="form-group m-md-0">
-                                    <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                                    <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                                </div>
-                            </div>
-                            <div class="form-inline w-50 mx-auto">
-                                <div class="form-group m-md-0">
-                                <p class="m-0 font-size-12 font-weight-regular">${eDayAPR}% </p>
-                                <p class="m-0 font-size-12 font-weight-regular">${eYearAPR}%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    ${combinedAprDisplay}
                     <div class="col-sm-12 col-md-3 align-items-center text-center snob-tvl pb-10 pb-md-0">
                         <p class="m-0 font-size-12"><ion-icon name="bowling-ball-outline"></ion-icon> Allocation</p>
                         <span class="badge font-size-12 px-5 px-sm-10 mx-5 font-weight-regular">${ (options.pool_weight * 100)}%</span>
@@ -1579,25 +1458,6 @@ async function main() {
                         <img class="rounded-circle" width="48" src="${options.logo_token2}" alt="${options.pool_name}">
                         <h6 class="pl-10 m-0">${options.pool_name}</h6>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-1 align-items-center text-center snob-tvl pb-10 pb-md-0 ${options.tvl_class}">
-                    <p class="m-0 font-size-12"><ion-icon name="lock-closed-outline"></ion-icon> Total Value Locked</p>
-                    <span class="badge font-size-12 px-5 px-sm-10 mx-5">${options.tvl_display}</span>
-                </div>
-                <div class="col-sm-12 col-md-2 d-flex align-items-center pb-10 pb-md-0 mx-auto">
-                    <div class="form-inline w-50 mx-auto">
-                        <div class="form-group m-md-0">
-                            <p class="m-0 font-size-12 font-weight-light">Daily:</p>
-                            <p class="m-0 font-size-12 font-weight-light">Yearly:</p>
-                        </div>
-                    </div>
-                    <div class="form-inline w-50 mx-auto mx-md-0">
-                        <div class="form-group m-md-0">
-                        <p class="m-0 font-size-12 font-weight-regular">${eDayAPR}% </p>
-                        <p class="m-0 font-size-12 font-weight-regular">${eYearAPR}%</p>
-                        </div>
-                    </div>
-
                 </div>
                 ${estimatedRate}
                 <div class="col-sm-12 col-md-3 align-items-center text-center text-md-right snob-tvl pb-10 pb-md-0 mx-auto">
@@ -1681,7 +1541,7 @@ async function main() {
     stake: 'stakeS3F',
     unstake: 'withdrawPool8',
     claim: 'claimPool8',
-    icequeen_apr: 0,
+    icequeen_apr: pool8APR,
     snowglobe_apr: null,
     tvl_display: pool8tvlDisplay,
     total_pgl: null,
@@ -1690,9 +1550,9 @@ async function main() {
     stake_display: ''
   })
   poolS3D({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xba7deebbfc5fa1100fb055a87773e1e99cd3507a/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xaeb044650278731ef3dc244692ab9f64c78ffaea/logo.png',
-    logo_token3 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xde3a24028580884448a5397872046a019649b084/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a/logo.png',
+    logo_token3 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xde3A24028580884448a5397872046a019649b084/logo.png',
     pool_nickname: 'pool-7',
     pool_name: 'StableVault S3D',
     url: null,
@@ -1716,8 +1576,8 @@ async function main() {
     stake_display: ''
   })
   pool({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb3fe5374f67d7a22886a0ee082b2e2f9d2651651/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB3fe5374F67D7a22886A0eE082b2E2f9d2651651/logo.png',
     pool_nickname: 'pool-6',
     pool_name: 'LINK-AVAX sPGL',
     url: null,
@@ -1739,12 +1599,12 @@ async function main() {
     total_pgl: null,
     pool_share_display: poolShareDisplay_6,
     pool_share_display_pgl: poolShareDisplay_6_pgl,
-    stake_display: '',
+    stake_display: stakeDisplay_6,
     apy: link_annual_apy
   })
   pool({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xde3a24028580884448a5397872046a019649b084/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xde3A24028580884448a5397872046a019649b084/logo.png',
     pool_nickname: 'pool-5',
     pool_name: 'USDT-AVAX sPGL',
     url: null,
@@ -1770,8 +1630,8 @@ async function main() {
     apy: usdt_annual_apy
   })
   pool({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388d7d48fa6e15/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png',
     pool_nickname: 'pool-4',
     pool_name: 'ETH-AVAX sPGL',
     url: null,
@@ -1797,8 +1657,8 @@ async function main() {
     apy: eth_annual_apy
   })
   pool({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0x60781c2586d68229fde47564546784ab3faca982/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x60781C2586D68229fde47564546784ab3fACA982/logo.png',
     pool_nickname: 'pool-3',
     pool_name: 'PNG-AVAX sPGL',
     url: null,
@@ -1824,8 +1684,8 @@ async function main() {
     apy: png_annual_apy
   })
   poolSNOB({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xc38f41a296a4493ff429f1238e030924a1542e50/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xC38f41A296A4493Ff429F1238e030924A1542e50/logo.png',
     pool_nickname: 'pool-2',
     pool_name: 'SNOB-AVAX Pangolin LP',
     url: SNOB_AVAX_POOL_URL,
@@ -1850,8 +1710,8 @@ async function main() {
     stake_display: stakeDisplay_2
   })
   pool({
-    logo_token1 : 'https://x-api.snowball.network/assets/avalanche-tokens/0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7/logo.png',
-    logo_token2 : 'https://x-api.snowball.network/assets/avalanche-tokens/0x39cf1bd5f15fb22ec3d9ff86b0727afc203427cc/logo.png',
+    logo_token1 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png',
+    logo_token2 : 'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0x39cf1BD5f15fb22eC3D9Ff86b0727aFc203427cc/logo.png',
     pool_nickname: 'pool-1',
     pool_name: 'SUSHI-AVAX sPGL',
     url: null,

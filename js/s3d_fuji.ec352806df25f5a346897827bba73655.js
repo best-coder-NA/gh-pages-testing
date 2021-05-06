@@ -22,21 +22,21 @@ async function main() {
   const TUNDRA_ABI = [{"inputs":[{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"uint256","name":"minToMint","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"}],"name":"addLiquidity","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"provider","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"tokenAmounts","type":"uint256[]"},{"indexed":false,"internalType":"uint256[]","name":"fees","type":"uint256[]"},{"indexed":false,"internalType":"uint256","name":"invariant","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"lpTokenSupply","type":"uint256"}],"name":"AddLiquidity","type":"event"},{"inputs":[{"internalType":"contractIERC20[]","name":"_pooledTokens","type":"address[]"},{"internalType":"uint8[]","name":"decimals","type":"uint8[]"},{"internalType":"string","name":"lpTokenName","type":"string"},{"internalType":"string","name":"lpTokenSymbol","type":"string"},{"internalType":"uint256","name":"_a","type":"uint256"},{"internalType":"uint256","name":"_fee","type":"uint256"},{"internalType":"uint256","name":"_adminFee","type":"uint256"},{"internalType":"uint256","name":"_withdrawFee","type":"uint256"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newAdminFee","type":"uint256"}],"name":"NewAdminFee","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newSwapFee","type":"uint256"}],"name":"NewSwapFee","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"newWithdrawFee","type":"uint256"}],"name":"NewWithdrawFee","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"pause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"inputs":[{"internalType":"uint256","name":"futureA","type":"uint256"},{"internalType":"uint256","name":"futureTime","type":"uint256"}],"name":"rampA","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"oldA","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newA","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"initialTime","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"futureTime","type":"uint256"}],"name":"RampA","type":"event"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256[]","name":"minAmounts","type":"uint256[]"},{"internalType":"uint256","name":"deadline","type":"uint256"}],"name":"removeLiquidity","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"provider","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"tokenAmounts","type":"uint256[]"},{"indexed":false,"internalType":"uint256","name":"lpTokenSupply","type":"uint256"}],"name":"RemoveLiquidity","type":"event"},{"inputs":[{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"uint256","name":"maxBurnAmount","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"}],"name":"removeLiquidityImbalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"provider","type":"address"},{"indexed":false,"internalType":"uint256[]","name":"tokenAmounts","type":"uint256[]"},{"indexed":false,"internalType":"uint256[]","name":"fees","type":"uint256[]"},{"indexed":false,"internalType":"uint256","name":"invariant","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"lpTokenSupply","type":"uint256"}],"name":"RemoveLiquidityImbalance","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"provider","type":"address"},{"indexed":false,"internalType":"uint256","name":"lpTokenAmount","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"lpTokenSupply","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"boughtId","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tokensBought","type":"uint256"}],"name":"RemoveLiquidityOne","type":"event"},{"inputs":[{"internalType":"uint256","name":"tokenAmount","type":"uint256"},{"internalType":"uint8","name":"tokenIndex","type":"uint8"},{"internalType":"uint256","name":"minAmount","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"}],"name":"removeLiquidityOneToken","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newAdminFee","type":"uint256"}],"name":"setAdminFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newWithdrawFee","type":"uint256"}],"name":"setDefaultWithdrawFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newSwapFee","type":"uint256"}],"name":"setSwapFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"stopRampA","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"currentA","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"time","type":"uint256"}],"name":"StopRampA","type":"event"},{"inputs":[{"internalType":"uint8","name":"tokenIndexFrom","type":"uint8"},{"internalType":"uint8","name":"tokenIndexTo","type":"uint8"},{"internalType":"uint256","name":"dx","type":"uint256"},{"internalType":"uint256","name":"minDy","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"}],"name":"swap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"uint256","name":"tokensSold","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tokensBought","type":"uint256"},{"indexed":false,"internalType":"uint128","name":"soldId","type":"uint128"},{"indexed":false,"internalType":"uint128","name":"boughtId","type":"uint128"}],"name":"TokenSwap","type":"event"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"unpause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"transferAmount","type":"uint256"}],"name":"updateUserWithdrawFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawAdminFees","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"calculateCurrentWithdrawFee","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"calculateRemoveLiquidity","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"tokenAmount","type":"uint256"},{"internalType":"uint8","name":"tokenIndex","type":"uint8"}],"name":"calculateRemoveLiquidityOneToken","outputs":[{"internalType":"uint256","name":"availableTokenAmount","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"tokenIndexFrom","type":"uint8"},{"internalType":"uint8","name":"tokenIndexTo","type":"uint8"},{"internalType":"uint256","name":"dx","type":"uint256"}],"name":"calculateSwap","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256[]","name":"amounts","type":"uint256[]"},{"internalType":"bool","name":"deposit","type":"bool"}],"name":"calculateTokenAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getA","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"getAdminBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getAPrecise","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getDepositTimestamp","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"index","type":"uint8"}],"name":"getToken","outputs":[{"internalType":"contractIERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint8","name":"index","type":"uint8"}],"name":"getTokenBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"tokenAddress","type":"address"}],"name":"getTokenIndex","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getVirtualPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"swapStorage","outputs":[{"internalType":"uint256","name":"initialA","type":"uint256"},{"internalType":"uint256","name":"futureA","type":"uint256"},{"internalType":"uint256","name":"initialATime","type":"uint256"},{"internalType":"uint256","name":"futureATime","type":"uint256"},{"internalType":"uint256","name":"swapFee","type":"uint256"},{"internalType":"uint256","name":"adminFee","type":"uint256"},{"internalType":"uint256","name":"defaultWithdrawFee","type":"uint256"},{"internalType":"contractLPToken","name":"lpToken","type":"address"}],"stateMutability":"view","type":"function"}]
   const ICEQUEEN_ABI = [{ "type": "constructor", "stateMutability": "nonpayable", "inputs": [{ "type": "address", "name": "_snowball", "internalType": "contract Snowball" }, { "type": "address", "name": "_devfund", "internalType": "address" }, { "type": "address", "name": "_treasury", "internalType": "address" }, { "type": "uint256", "name": "_snowballPerBlock", "internalType": "uint256" }, { "type": "uint256", "name": "_startBlock", "internalType": "uint256" }, { "type": "uint256", "name": "_bonusEndBlock", "internalType": "uint256" }] }, { "type": "event", "name": "Deposit", "inputs": [{ "type": "address", "name": "user", "internalType": "address", "indexed": true }, { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true }, { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }], "anonymous": false }, { "type": "event", "name": "EmergencyWithdraw", "inputs": [{ "type": "address", "name": "user", "internalType": "address", "indexed": true }, { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true }, { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }], "anonymous": false }, { "type": "event", "name": "OwnershipTransferred", "inputs": [{ "type": "address", "name": "previousOwner", "internalType": "address", "indexed": true }, { "type": "address", "name": "newOwner", "internalType": "address", "indexed": true }], "anonymous": false }, { "type": "event", "name": "Recovered", "inputs": [{ "type": "address", "name": "token", "internalType": "address", "indexed": false }, { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }], "anonymous": false }, { "type": "event", "name": "Withdraw", "inputs": [{ "type": "address", "name": "user", "internalType": "address", "indexed": true }, { "type": "uint256", "name": "pid", "internalType": "uint256", "indexed": true }, { "type": "uint256", "name": "amount", "internalType": "uint256", "indexed": false }], "anonymous": false }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "BONUS_MULTIPLIER", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "add", "inputs": [{ "type": "uint256", "name": "_allocPoint", "internalType": "uint256" }, { "type": "address", "name": "_lpToken", "internalType": "contract IERC20" }, { "type": "bool", "name": "_withUpdate", "internalType": "bool" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "bonusEndBlock", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "deposit", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }, { "type": "uint256", "name": "_amount", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "devFundDivRate", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "address", "name": "", "internalType": "address" }], "name": "devfund", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "emergencyWithdraw", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "getMultiplier", "inputs": [{ "type": "uint256", "name": "_from", "internalType": "uint256" }, { "type": "uint256", "name": "_to", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "massUpdatePools", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "address", "name": "", "internalType": "address" }], "name": "owner", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "pendingSnowball", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }, { "type": "address", "name": "_user", "internalType": "address" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "address", "name": "lpToken", "internalType": "contract IERC20" }, { "type": "uint256", "name": "allocPoint", "internalType": "uint256" }, { "type": "uint256", "name": "lastRewardBlock", "internalType": "uint256" }, { "type": "uint256", "name": "accSnowballPerShare", "internalType": "uint256" }], "name": "poolInfo", "inputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "poolLength", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "renounceOwnership", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "set", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }, { "type": "uint256", "name": "_allocPoint", "internalType": "uint256" }, { "type": "bool", "name": "_withUpdate", "internalType": "bool" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "setBonusEndBlock", "inputs": [{ "type": "uint256", "name": "_bonusEndBlock", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "setDevFundDivRate", "inputs": [{ "type": "uint256", "name": "_devFundDivRate", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "setSnowballPerBlock", "inputs": [{ "type": "uint256", "name": "_snowballPerBlock", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "setTreasuryDivRate", "inputs": [{ "type": "uint256", "name": "_treasuryDivRate", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "address", "name": "", "internalType": "contract Snowball" }], "name": "snowball", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "snowballPerBlock", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "startBlock", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "totalAllocPoint", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "transferOwnership", "inputs": [{ "type": "address", "name": "newOwner", "internalType": "address" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "address", "name": "", "internalType": "address" }], "name": "treasury", "inputs": [] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }], "name": "treasuryDivRate", "inputs": [] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "updateDevfund", "inputs": [{ "type": "address", "name": "_devfund", "internalType": "address" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "updatePool", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "updateTreasury", "inputs": [{ "type": "address", "name": "_treasury", "internalType": "address" }] }, { "type": "function", "stateMutability": "view", "outputs": [{ "type": "uint256", "name": "amount", "internalType": "uint256" }, { "type": "uint256", "name": "rewardDebt", "internalType": "uint256" }], "name": "userInfo", "inputs": [{ "type": "uint256", "name": "", "internalType": "uint256" }, { "type": "address", "name": "", "internalType": "address" }] }, { "type": "function", "stateMutability": "nonpayable", "outputs": [], "name": "withdraw", "inputs": [{ "type": "uint256", "name": "_pid", "internalType": "uint256" }, { "type": "uint256", "name": "_amount", "internalType": "uint256" }] }]
 
-  // //FUJI ADDRESSES
-  // const TUNDRA_ADDRESS = "0x427BBe0E9D632b0285F046Ca36898D07F449452A"
-  // const STABLE_1_ADDRESS = "0xF7838d3fb0c8Ea840191a463551662c4064D3775"
-  // const STABLE_2_ADDRESS = "0xA79d0E1cD4E2482C7DEcCB50848d91B3daFE10F0"
-  // const STABLE_3_ADDRESS = "0xa17901A40Ec10a72840e1EaEa0Ea11B0Ad8a53D9"
-  // const S3F_ADDRESS = "0xE730AFB0C84416e33f17a6C781e46E59C6780CC4"
+  //FUJI ADDRESSES
+  const TUNDRA_ADDRESS = "0x427BBe0E9D632b0285F046Ca36898D07F449452A"
+  const STABLE_1_ADDRESS = "0xF7838d3fb0c8Ea840191a463551662c4064D3775"
+  const STABLE_2_ADDRESS = "0xA79d0E1cD4E2482C7DEcCB50848d91B3daFE10F0"
+  const STABLE_3_ADDRESS = "0xa17901A40Ec10a72840e1EaEa0Ea11B0Ad8a53D9"
+  const S3D_ADDRESS = "0xE730AFB0C84416e33f17a6C781e46E59C6780CC4"
 
   // MAINNET ADDRESSES
-  const TUNDRA_ADDRESS = "0x05c5DB43dB72b6E73702EEB1e5b62A03a343732a"
-  const STABLE_1_ADDRESS = "0xDC42728B0eA910349ed3c6e1c9Dc06b5FB591f98" //frax
-  const STABLE_2_ADDRESS = "0x1C20E891Bab6b1727d14Da358FAe2984Ed9B59EB" //true usd
-  const STABLE_3_ADDRESS = "0xde3A24028580884448a5397872046a019649b084" //usdt
-  const S3F_ADDRESS = "0xA42BE3dB9aff3aee48167b240bFEE5e1697e1281"
+  // const TUNDRA_ADDRESS = "0x6B41E5c07F2d382B921DE5C34ce8E2057d84C042"
+  // const STABLE_1_ADDRESS = "0xde3A24028580884448a5397872046a019649b084"
+  // const STABLE_2_ADDRESS = "0xaEb044650278731Ef3DC244692AB9F64C78FfaEA"
+  // const STABLE_3_ADDRESS = "0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a"
+  // const S3D_ADDRESS = "0xdE1A11C331a0E45B9BA8FeE04D4B51A745f1e4A4"
 
-  // const ICEQUEEN_ADDR = "0xB12531a2d758c7a8BF09f44FC88E646E1BF9D375";
+  const ICEQUEEN_ADDR = "0xB12531a2d758c7a8BF09f44FC88E646E1BF9D375";
 
   const App = await init_ethers();
   const signer = App.provider.getSigner();
@@ -54,7 +54,7 @@ async function main() {
     return tundraContract_approve(TUNDRA_ABI, TUNDRA_ADDRESS, STABLE_3_ADDRESS, App)
   }
   const approveLP = async function () {
-    return tundraContract_approve(TUNDRA_ABI, TUNDRA_ADDRESS, S3F_ADDRESS, App)
+    return tundraContract_approve(TUNDRA_ABI, TUNDRA_ADDRESS, S3D_ADDRESS, App)
   }
   const revokeStable1 = async function () {
     return tundraContract_revoke(TUNDRA_ABI, TUNDRA_ADDRESS, STABLE_1_ADDRESS, App)
@@ -66,19 +66,19 @@ async function main() {
     return tundraContract_revoke(TUNDRA_ABI, TUNDRA_ADDRESS, STABLE_3_ADDRESS, App)
   }
   const revokeLP = async function () {
-    return tundraContract_revoke(TUNDRA_ABI, TUNDRA_ADDRESS, S3F_ADDRESS, App)
+    return tundraContract_revoke(TUNDRA_ABI, TUNDRA_ADDRESS, S3D_ADDRESS, App)
   }
   const depositStables = async function () {
     return tundraContract_deposit(TUNDRA_ABI, TUNDRA_ADDRESS, STABLE_1_ADDRESS, STABLE_2_ADDRESS, STABLE_3_ADDRESS, App)
   }
   const withdrawLP = async function () {
-    return tundraContract_withdraw(TUNDRA_ABI, TUNDRA_ADDRESS, S3F_ADDRESS, TUNDRA_ADDRESS, App)
+    return tundraContract_withdraw(TUNDRA_ABI, TUNDRA_ADDRESS, S3D_ADDRESS, TUNDRA_ADDRESS, App)
   }
   // Tokens & contracts
   const STABLE_1_TOKEN = new ethers.Contract(STABLE_1_ADDRESS, ERC20_ABI, signer);
   const STABLE_2_TOKEN = new ethers.Contract(STABLE_2_ADDRESS, ERC20_ABI, signer);
   const STABLE_3_TOKEN = new ethers.Contract(STABLE_3_ADDRESS, ERC20_ABI, signer);
-  const S3F_TOKEN = new ethers.Contract(S3F_ADDRESS, ERC20_ABI, signer);
+  const S3D_TOKEN = new ethers.Contract(S3D_ADDRESS, ERC20_ABI, signer);
   const TUNDRA_CONTRACT = new ethers.Contract(TUNDRA_ADDRESS, TUNDRA_ABI, signer);
 
   // User Balances
@@ -87,34 +87,34 @@ async function main() {
   const s3_balance = await STABLE_3_TOKEN.balanceOf(App.YOUR_ADDRESS);
   const s1_balance_formatted = s1_balance/1e18 > .001 ? (s1_balance/1e18 - .001).toFixed(3) : 0;
   const s2_balance_formatted = s2_balance/1e18 > .001 ? (s2_balance/1e18 - .001).toFixed(3) : 0;
-  const s3_balance_formatted = s3_balance/1e6 > .001 ? (s3_balance/1e6 - .001).toFixed(3) : 0;
-  const S3F_balance = await S3F_TOKEN.balanceOf(App.YOUR_ADDRESS);
+  const s3_balance_formatted = s3_balance/1e18 > .001 ? (s3_balance/1e18 - .001).toFixed(3) : 0;
+  const S3D_balance = await S3D_TOKEN.balanceOf(App.YOUR_ADDRESS);
   // const ICEQUEEN_CONTRACT = new ethers.Contract(ICEQUEEN_ADDR, ICEQUEEN_ABI, signer)
   // const stakedPool7 = await ICEQUEEN_CONTRACT.userInfo(7, App.YOUR_ADDRESS)
   $('#token_1_balance').html(`${s1_balance_formatted}`);
   $("#from_balance").html(s1_balance_formatted);
   $('#token_2_balance').html(`${s2_balance_formatted}`);
   $('#token_3_balance').html(`${s3_balance_formatted}`);
-  $('#withdraw_balance').html(`${(S3F_balance/1e18).toFixed(3)}`);
+  $('#withdraw_balance').html(`${(S3D_balance/1e18).toFixed(3)}`);
   // $('#staked_balance').html(`${(stakedPool7.amount/1e18).toFixed(3)}`);
 
   // supply
   const s1_supply = await STABLE_1_TOKEN.balanceOf(TUNDRA_ADDRESS);
   const s2_supply = await STABLE_2_TOKEN.balanceOf(TUNDRA_ADDRESS);
   const s3_supply = await STABLE_3_TOKEN.balanceOf(TUNDRA_ADDRESS);
-  const combined_supply = s1_supply / 1e18 + s2_supply / 1e18 + s3_supply / 1e6;
+  const combined_supply = s1_supply / 1e18 + s2_supply / 1e18 + s3_supply / 1e18;
   const s1_supply_percentage = (s1_supply / 1e18 / combined_supply * 100) || 0;
   const s2_supply_percentage = (s2_supply / 1e18 / combined_supply * 100) || 0;
-  const s3_supply_percentage = (s3_supply / 1e6 / combined_supply * 100) || 0;
-  const S3F_supply = await S3F_TOKEN.totalSupply();
-  const user_percentage = ((S3F_balance / 1e18) / (S3F_supply / 1e18) * 100) || 0;
-  const S3F_ratio = combined_supply / (S3F_supply / 1e18);
-  console.log("S3F_ratio:", S3F_ratio);
+  const s3_supply_percentage = (s3_supply / 1e18 / combined_supply * 100) || 0;
+  const S3D_supply = await S3D_TOKEN.totalSupply();
+  const user_percentage = ((S3D_balance / 1e18) / (S3D_supply / 1e18) * 100) || 0;
+  const S3D_ratio = combined_supply / (S3D_supply / 1e18);
+  console.log("S3D_ratio:", S3D_ratio);
 
   // const prices = await getAvaxPrices();
   // const snobPrice = prices['0xC38f41A296A4493Ff429F1238e030924A1542e50'] ? prices['0xC38f41A296A4493Ff429F1238e030924A1542e50'].usd : 0;
-  // const totalStakedS3F = await S3F_TOKEN.balanceOf(ICEQUEEN_ADDR)
-  // const pool7tvl = totalStakedS3F / 1e18;
+  // const totalStakedS3D = await S3D_TOKEN.balanceOf(ICEQUEEN_ADDR)
+  // const pool7tvl = totalStakedS3D / 1e18;
   // const pool7weight = 0.20;
   // const snowballsPerBlock = await ICEQUEEN_CONTRACT.snowballPerBlock();
   // const pool7APR = snowballsPerBlock * pool7weight / 1e18 * 15000 * snobPrice / pool7tvl * 100 * 365;
@@ -123,7 +123,7 @@ async function main() {
 
   const t1_supply_display = new Intl.NumberFormat('en-US').format((s1_supply / 1e18).toFixed(2));
   const t2_supply_display = new Intl.NumberFormat('en-US').format((s2_supply / 1e18).toFixed(2));
-  const t3_supply_display = new Intl.NumberFormat('en-US').format((s3_supply / 1e6).toFixed(2));
+  const t3_supply_display = new Intl.NumberFormat('en-US').format((s3_supply / 1e18).toFixed(2));
   const combined_supply_display = new Intl.NumberFormat('en-US').format(combined_supply.toFixed(2));
 
   $("#pool_percent").html(`${user_percentage.toLocaleString()}%`);
@@ -134,41 +134,41 @@ async function main() {
   $("#t2_supply_percentage").html(`${s2_supply_percentage.toLocaleString()}%`);
   $("#t3_supply_percentage").html(`${s3_supply_percentage.toLocaleString()}%`);
   $("#combined_supply").html(`$${combined_supply_display}`);
-  console.log("sUSD Supply:", S3F_supply / 1e18);
+  console.log("sUSD Supply:", S3D_supply / 1e18);
   console.log("Tundra S1 Supply:", s1_supply / 1e18);
   console.log("Tundra S2 Supply:", s2_supply / 1e18);
-  console.log("Tundra S3 Supply:", s3_supply / 1e6);
+  console.log("Tundra S3 Supply:", s3_supply / 1e18);
   console.log("Tundra Combined Supply:", combined_supply);
-  console.log("user sUSD Supply:", S3F_balance / 1e18);
+  console.log("user sUSD Supply:", S3D_balance / 1e18);
   console.log("user_percentage:", `${user_percentage}`);
 
   // Approvals
   const s1_allowance = await STABLE_1_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
   const s2_allowance = await STABLE_2_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
   const s3_allowance = await STABLE_3_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
-  const S3F_allowance = await S3F_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
+  const S3D_allowance = await S3D_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
   console.log("Token 1 allowance: ", s1_allowance / 1e18);
   console.log("Token 2 allowance: ", s2_allowance / 1e18);
-  console.log("Token 3 allowance: ", s3_allowance / 1e6);
-  console.log("S3F allowance: ", S3F_allowance / 1e18);
+  console.log("Token 3 allowance: ", s3_allowance / 1e18);
+  console.log("S3D allowance: ", S3D_allowance / 1e18);
 
   // approvals
   if (s1_allowance == 0) {
-    $("#approve_swap_btn_FRAX").show();
+    $("#approve_swap_btn_usdt").show();
     $("#token_1_approve").show();
     $("#token_1_approve").click(function(){
       approveStable1();
     });
-    $("#approve_swap_btn_FRAX").click(function(){
+    $("#approve_swap_btn_usdt").click(function(){
       approveStable1();
     });
   } else {
-    $("#revoke_swap_btn_FRAX").show();
+    $("#revoke_swap_btn_usdt").show();
     $("#token_1_revoke").show();
     $("#token_1_revoke").click(function() {
       revokeStable1();
     });
-    $("#revoke_swap_btn_FRAX").click(function() {
+    $("#revoke_swap_btn_usdt").click(function() {
       revokeStable1();
     });
   }
@@ -177,7 +177,7 @@ async function main() {
     $("#token_2_approve").click(function(){
       approveStable2();
     });
-    $("#approve_swap_btn_TUSD").click(function(){
+    $("#approve_swap_btn_busd").click(function(){
       approveStable2();
     });
   } else {
@@ -185,7 +185,7 @@ async function main() {
     $("#token_2_revoke").click(function() {
       revokeStable2();
     });
-    $("#revoke_swap_btn_TUSD").click(function(){
+    $("#revoke_swap_btn_busd").click(function(){
       revokeStable2();
     });
   }
@@ -194,7 +194,7 @@ async function main() {
     $("#token_3_approve").click(function(){
       approveStable3();
     });
-    $("#approve_swap_btn_USDT").click(function(){
+    $("#approve_swap_btn_dai").click(function(){
       approveStable3();
     });
   } else {
@@ -202,27 +202,27 @@ async function main() {
     $("#token_3_revoke").click(function() {
       revokeStable3();
     });
-    $("#revoke_swap_btn_USDT").click(function(){
+    $("#revoke_swap_btn_dai").click(function(){
       revokeStable3();
     });
   }
 
   $("#deposit_btn").click(function(){
-    loadDepositModal(TUNDRA_CONTRACT, App, S3F_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS);
+    loadDepositModal(TUNDRA_CONTRACT, App, S3D_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS);
     $("#deposit_confirm_btn").prop('disabled', false);
   });
   $("#deposit_confirm_btn").click(function(){
     depositStables();
   });
   $("#withdraw_open_btn").click(function() {
-    loadWithdrawModal(TUNDRA_CONTRACT, S3F_TOKEN, App, true);
+    loadWithdrawModal(TUNDRA_CONTRACT, S3D_TOKEN, App, true);
     $("#withdraw_confirm_btn").prop('disabled', false);
   });
   $("#withdraw_confirm_btn").click(function(){
     withdrawLP();
   });
 
-  if (S3F_allowance == 0){
+  if (S3D_allowance == 0){
     $("#withdraw_approve_btn").show();
     $("#withdraw_approve_btn").click(function(){
       approveLP();
@@ -234,29 +234,29 @@ async function main() {
     });
   }
 
-  $("#from_FRAX").click(function() {
-    loadFrom(s1_balance_formatted, 'FRAX', s1_allowance, TUNDRA_CONTRACT);
+  $("#from_usdt").click(function() {
+    loadFrom(s1_balance_formatted, 'usdt', s1_allowance, TUNDRA_CONTRACT);
   });
-  $("#from_TUSD").click(function() {
-    loadFrom(s2_balance_formatted, 'TUSD', s2_allowance, TUNDRA_CONTRACT);
+  $("#from_busd").click(function() {
+    loadFrom(s2_balance_formatted, 'busd', s2_allowance, TUNDRA_CONTRACT);
   });
-  $("#from_USDT").click(function() {
-    loadFrom(s3_balance_formatted, 'USDT', s3_allowance, TUNDRA_CONTRACT);
+  $("#from_dai").click(function() {
+    loadFrom(s3_balance_formatted, 'dai', s3_allowance, TUNDRA_CONTRACT);
   });
 
-  $("#to_FRAX").click(function() {
-    loadTo('FRAX', TUNDRA_CONTRACT);
+  $("#to_usdt").click(function() {
+    loadTo('usdt', TUNDRA_CONTRACT);
   });
-  $("#to_TUSD").click(function() {
-    loadTo('TUSD', TUNDRA_CONTRACT);
+  $("#to_busd").click(function() {
+    loadTo('busd', TUNDRA_CONTRACT);
   });
-  $("#to_USDT").click(function() {
-    loadTo('USDT', TUNDRA_CONTRACT);
+  $("#to_dai").click(function() {
+    loadTo('dai', TUNDRA_CONTRACT);
   });
 
   // set defaults
-  $("#swap_input").data("from_token", 'FRAX');
-  $("#swap_input").data("to_token", 'TUSD');
+  $("#swap_input").data("from_token", 'usdt');
+  $("#swap_input").data("to_token", 'busd');
 
   $("#swap_input").change(function() {
     let from_token = $("#swap_input").data("from_token");
@@ -276,23 +276,23 @@ async function main() {
     swapTokens(from_token, to_token, TUNDRA_CONTRACT, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS, App);
   });
 
-  $("#withdraw_percentage, #radio-withdraw-combo, #radio-withdraw-FRAX, #radio-withdraw-TUSD, #radio-withdraw-USDT").change(function() {
-    updateWithdrawAmount(TUNDRA_CONTRACT, S3F_TOKEN, App);
+  $("#withdraw_percentage, #radio-withdraw-combo, #radio-withdraw-usdt, #radio-withdraw-busd, #radio-withdraw-dai").change(function() {
+    updateWithdrawAmount(TUNDRA_CONTRACT, S3D_TOKEN, App);
   });
 
   $("#swap_max").click(function(){
     let from_token = $("#swap_input").data("from_token");
     let to_token = $("#swap_input").data("to_token");
     switch(from_token) {
-      case 'FRAX':
+      case 'usdt':
         $("#swap_input").val(s1_balance_formatted);
         updateSwapAmount(from_token, to_token, TUNDRA_CONTRACT);
         break;
-      case 'TUSD':
+      case 'busd':
         $("#swap_input").val(s2_balance_formatted);
         updateSwapAmount(from_token, to_token, TUNDRA_CONTRACT);
         break;
-      case 'USDT':
+      case 'dai':
         $("#swap_input").val(s3_balance_formatted);
         updateSwapAmount(from_token, to_token, TUNDRA_CONTRACT);
         break;
@@ -335,27 +335,27 @@ async function main() {
   hideLoading();
 }
 
-const updateWithdrawAmount = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
+const updateWithdrawAmount = async function(TUNDRA_CONTRACT, S3D_TOKEN, App){
   const withdrawPercentage = $("#withdraw_percentage").val();
   $("#withdraw_percentage_display").html(withdrawPercentage);
   const comboChecked = $("#radio-withdraw-combo").is(':checked');
-  const FRAXChecked = $("#radio-withdraw-FRAX").is(':checked');
-  const TUSDChecked = $("#radio-withdraw-TUSD").is(':checked');
-  const USDTChecked = $("#radio-withdraw-USDT").is(':checked');
+  const usdtChecked = $("#radio-withdraw-usdt").is(':checked');
+  const busdChecked = $("#radio-withdraw-busd").is(':checked');
+  const daiChecked = $("#radio-withdraw-dai").is(':checked');
   console.log("withdrawPercentage:", withdrawPercentage);
-  const S3F_balance = await S3F_TOKEN.balanceOf(App.YOUR_ADDRESS);
-  console.log("S3F_balance:", S3F_balance);
-  let calculatedWithdraw = S3F_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
+  const S3D_balance = await S3D_TOKEN.balanceOf(App.YOUR_ADDRESS);
+  console.log("S3D_balance:", S3D_balance);
+  let calculatedWithdraw = S3D_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
 
   if (comboChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidity(App.YOUR_ADDRESS, calculatedWithdraw);
     if (withdrawAmount && withdrawAmount.length == 3) {
       $("#token_1_withdraw_input").val((withdrawAmount[0] / 1e18).toFixed(2));
       $("#token_2_withdraw_input").val((withdrawAmount[1] / 1e18).toFixed(2));
-      $("#token_3_withdraw_input").val((withdrawAmount[2] / 1e6).toFixed(2));
+      $("#token_3_withdraw_input").val((withdrawAmount[2] / 1e18).toFixed(2));
     }
   }
-  if (FRAXChecked){
+  if (usdtChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 0);
     if (withdrawAmount) {
       $("#token_1_withdraw_input").val((withdrawAmount / 1e18).toFixed(2));
@@ -363,7 +363,7 @@ const updateWithdrawAmount = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
       $("#token_3_withdraw_input").val(0);
     }
   }
-  if (TUSDChecked){
+  if (busdChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 1);
     if (withdrawAmount) {
       $("#token_1_withdraw_input").val(0);
@@ -371,12 +371,12 @@ const updateWithdrawAmount = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
       $("#token_3_withdraw_input").val(0);
     }
   }
-  if (USDTChecked){
+  if (daiChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 2);
     if (withdrawAmount) {
       $("#token_1_withdraw_input").val(0);
       $("#token_2_withdraw_input").val(0);
-      $("#token_3_withdraw_input").val((withdrawAmount / 1e6).toFixed(2));
+      $("#token_3_withdraw_input").val((withdrawAmount / 1e18).toFixed(2));
     }
   }
 }
@@ -417,16 +417,16 @@ const addEventToDom = async function (event, App) {
       let tokenAmounts = event.args.tokenAmounts;
       let deposits = [];
       if (tokenAmounts[0] > 0) {
-        let FRAX = new Intl.NumberFormat('en-US').format((tokenAmounts[0] / 1e18).toFixed(2));
-        deposits.push(`$${FRAX} FRAX`);
+        let usdt = new Intl.NumberFormat('en-US').format((tokenAmounts[0] / 1e18).toFixed(2));
+        deposits.push(`$${usdt} USDT`);
       }
       if (tokenAmounts[1] > 0) {
-        let TUSD = new Intl.NumberFormat('en-US').format((tokenAmounts[1] / 1e18).toFixed(2));
-        deposits.push(`$${TUSD} TUSD`);
+        let busd = new Intl.NumberFormat('en-US').format((tokenAmounts[1] / 1e18).toFixed(2));
+        deposits.push(`$${busd} BUSD`);
       }
       if (tokenAmounts[2] > 0) {
-        let USDT = new Intl.NumberFormat('en-US').format((tokenAmounts[2] / 1e6).toFixed(2));
-        deposits.push(`$${USDT} USDT`);
+        let dai = new Intl.NumberFormat('en-US').format((tokenAmounts[2] / 1e18).toFixed(2));
+        deposits.push(`$${dai} DAI`);
       }
       let depositsDisplay = deposits.join(' + ');
       row1 = `<div class="mb-5"><a target="_blank" href="${transactionUrl}"><span class="font-weight-bold">${label}: </span>`
@@ -436,8 +436,8 @@ const addEventToDom = async function (event, App) {
       let labelRemove = 'Remove';
       let tokenAmount = event.args.tokensBought;
       let tokenTypeId = event.args.boughtId;
-      let tokenLabel = tokenTypeId == 0 ? 'FRAX' : tokenTypeId == 1 ? 'TUSD' : 'USDT';
-      let decimals = tokenTypeId ==  2 ? 1e6 : 1e18;
+      let tokenLabel = tokenTypeId == 0 ? 'USDT' : tokenTypeId == 1 ? 'BUSD' : 'DAI';
+      let decimals = tokenTypeId ==  0 ? 1e18 : 1e18;
       row1 = `<div class="mb-5"><a target="_blank" href="${transactionUrl}"><span class="font-weight-bold">${labelRemove}: </span>`
       row1 += `$${(tokenAmount / decimals).toFixed(2)} ${tokenLabel} - ${event.timestamp}</a></div>`;
       break;
@@ -446,10 +446,10 @@ const addEventToDom = async function (event, App) {
       let tokenSold = event.args.soldId;
       let boughtAmount = event.args.tokensBought;
       let soldAmount = event.args.tokensSold;
-      let decimalsBought = tokenBought == 2 ? 1e6 : 1e18;
-      let decimalsSold = tokenSold == 2 ? 1e6 : 1e18;
-      let tokenBoughtLabel = tokenBought == 0 ? 'FRAX' : tokenBought == 1 ? 'TUSD' : ' USDT';
-      let tokenSoldLabel = tokenSold == 0 ? 'FRAX' : tokenSold == 1 ? 'TUSD' : ' USDT';
+      let decimalsBought = tokenBought == 0 ? 1e18 : 1e18;
+      let decimalsSold = tokenSold == 0 ? 1e18 : 1e18;
+      let tokenBoughtLabel = tokenBought == 0 ? 'USDT' : tokenBought == 1 ? 'BUSD' : ' DAI';
+      let tokenSoldLabel = tokenSold == 0 ? 'USDT' : tokenSold == 1 ? 'BUSD' : ' DAI';
       let boughtDisplay = new Intl.NumberFormat('en-US').format((boughtAmount / decimalsBought).toFixed(2));
       let soldDisplay = new Intl.NumberFormat('en-US').format((soldAmount / decimalsSold).toFixed(2));
       row1 = `<div class="mb-5"><a target="_blank" href="${transactionUrl}"><span class="font-weight-bold">Trade: </span>$${soldDisplay} ${tokenSoldLabel} for $${boughtDisplay} ${tokenBoughtLabel} - ${event.timestamp}</a></div>`;
@@ -472,16 +472,16 @@ const swapTokens = async function(from_token, to_token, TUNDRA_CONTRACT, STABLE_
   let allowance = 0;
 
   switch(from_token) {
-    case 'FRAX':
+    case 'usdt':
+      from_decimals = 15;
       allowance = await STABLE_1_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
       token1index = 0;
       break;
-    case 'TUSD':
+    case 'busd':
       allowance = await STABLE_2_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
       token1index = 1;
       break;
-    case 'USDT':
-      from_decimals = 3;
+    case 'dai':
       allowance = await STABLE_3_TOKEN.allowance(App.YOUR_ADDRESS, TUNDRA_ADDRESS)
       token1index = 2;
       break;
@@ -490,14 +490,14 @@ const swapTokens = async function(from_token, to_token, TUNDRA_CONTRACT, STABLE_
   }
 
   switch(to_token) {
-    case 'FRAX':
+    case 'usdt':
+      to_decimals = 1e18;
       token2index = 0;
       break;
-    case 'TUSD':
+    case 'busd':
       token2index = 1;
       break;
-    case 'USDT':
-      to_decimals = 1e6;
+    case 'dai':
       token2index = 2;
       break;
     default:
@@ -554,14 +554,14 @@ const updateSwapAmount = async function(from_token, to_token, TUNDRA_CONTRACT){
   let to_decimals = 1e18;
 
   switch(from_token) {
-    case 'FRAX':
+    case 'usdt':
+      from_decimals = 15;
       token1index = 0;
       break;
-    case 'TUSD':
+    case 'busd':
       token1index = 1;
       break;
-    case 'USDT':
-      from_decimals = 3;
+    case 'dai':
       token1index = 2;
       break;
     default:
@@ -569,14 +569,14 @@ const updateSwapAmount = async function(from_token, to_token, TUNDRA_CONTRACT){
   }
 
   switch(to_token) {
-    case 'FRAX':
+    case 'usdt':
+      to_decimals = 1e18;
       token2index = 0;
       break;
-    case 'TUSD':
+    case 'busd':
       token2index = 1;
       break;
-    case 'USDT':
-      to_decimals = 1e6;
+    case 'dai':
       token2index = 2;
       break;
     default:
@@ -593,9 +593,9 @@ const updateSwapAmount = async function(from_token, to_token, TUNDRA_CONTRACT){
   }
 }
 const loadTo = async function(token, TUNDRA_CONTRACT){
-  $("#to_FRAX_button").hide();
-  $("#to_TUSD_button").hide();
-  $("#to_USDT_button").hide();
+  $("#to_usdt_button").hide();
+  $("#to_busd_button").hide();
+  $("#to_dai_button").hide();
   $("#to_" + token + "_button").show();
   $("#swap_input").data("to_token", token);
   let from_token = $("#swap_input").data("from_token");
@@ -603,15 +603,15 @@ const loadTo = async function(token, TUNDRA_CONTRACT){
   $("#from_balance").click(); //click something to hide menu
 }
 const loadFrom = async function(balance, token, allowance, TUNDRA_CONTRACT){
-  $("#from_FRAX_button").hide();
-  $("#from_TUSD_button").hide();
-  $("#from_USDT_button").hide();
-  $("#approve_swap_btn_FRAX").hide();
-  $("#revoke_swap_btn_FRAX").hide();
-  $("#approve_swap_btn_TUSD").hide();
-  $("#revoke_swap_btn_TUSD").hide();
-  $("#approve_swap_btn_USDT").hide();
-  $("#revoke_swap_btn_USDT").hide();
+  $("#from_usdt_button").hide();
+  $("#from_busd_button").hide();
+  $("#from_dai_button").hide();
+  $("#approve_swap_btn_usdt").hide();
+  $("#revoke_swap_btn_usdt").hide();
+  $("#approve_swap_btn_busd").hide();
+  $("#revoke_swap_btn_busd").hide();
+  $("#approve_swap_btn_dai").hide();
+  $("#revoke_swap_btn_dai").hide();
 
   $("#from_balance").html(balance);
   $("#from_" + token + "_button").show();
@@ -626,7 +626,7 @@ const loadFrom = async function(balance, token, allowance, TUNDRA_CONTRACT){
   $("#from_balance").click(); //click something to hide menu
 }
 
-const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
+const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3D_TOKEN, App){
   $("#withdraw_confirm_btn").show();
   $("#withdraw_success").hide();
 
@@ -635,22 +635,22 @@ const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
 
   const withdrawPercentage = $("#withdraw_percentage").val();
   const comboChecked = $("#radio-withdraw-combo").is(':checked');
-  const FRAXChecked = $("#radio-withdraw-FRAX").is(':checked');
-  const TUSDChecked = $("#radio-withdraw-TUSD").is(':checked');
-  const USDTChecked = $("#radio-withdraw-USDT").is(':checked');
+  const usdtChecked = $("#radio-withdraw-usdt").is(':checked');
+  const busdChecked = $("#radio-withdraw-busd").is(':checked');
+  const daiChecked = $("#radio-withdraw-dai").is(':checked');
   console.log("withdrawPercentage:", withdrawPercentage);
-  const S3F_balance = await S3F_TOKEN.balanceOf(App.YOUR_ADDRESS);
-  console.log("S3F_balance:", S3F_balance);
-  let calculatedWithdraw = S3F_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
+  const S3D_balance = await S3D_TOKEN.balanceOf(App.YOUR_ADDRESS);
+  console.log("S3D_balance:", S3D_balance);
+  let calculatedWithdraw = S3D_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
   if (comboChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidity(App.YOUR_ADDRESS, calculatedWithdraw);
     if (withdrawAmount && withdrawAmount.length == 3) {
       $("#token_1_withdraw_amt").html((withdrawAmount[0] / 1e18).toLocaleString());
       $("#token_2_withdraw_amt").html((withdrawAmount[1] / 1e18).toLocaleString());
-      $("#token_3_withdraw_amt").html((withdrawAmount[2] / 1e6).toLocaleString());
+      $("#token_3_withdraw_amt").html((withdrawAmount[2] / 1e18).toLocaleString());
     }
   }
-  if (FRAXChecked){
+  if (usdtChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 0);
     if (withdrawAmount) {
       $("#token_1_withdraw_amt").html((withdrawAmount / 1e18).toLocaleString());
@@ -658,7 +658,7 @@ const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
       $("#token_3_withdraw_amt").html(0);
     }
   }
-  if (TUSDChecked){
+  if (busdChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 1);
     if (withdrawAmount) {
       $("#token_1_withdraw_amt").html(0);
@@ -666,17 +666,17 @@ const loadWithdrawModal = async function(TUNDRA_CONTRACT, S3F_TOKEN, App){
       $("#token_3_withdraw_amt").html(0);
     }
   }
-  if (USDTChecked){
+  if (daiChecked){
     const withdrawAmount = await TUNDRA_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 2);
     if (withdrawAmount) {
       $("#token_1_withdraw_amt").html(0);
       $("#token_2_withdraw_amt").html(0);
-      $("#token_3_withdraw_amt").html((withdrawAmount / 1e6).toLocaleString());
+      $("#token_3_withdraw_amt").html((withdrawAmount / 1e18).toLocaleString());
     }
   }
 }
 
-const loadDepositModal = async function(TUNDRA_CONTRACT, App, S3F_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS){
+const loadDepositModal = async function(TUNDRA_CONTRACT, App, S3D_ratio, STABLE_1_TOKEN, STABLE_2_TOKEN, STABLE_3_TOKEN, TUNDRA_ADDRESS){
   $("#deposit_confirm_btn").show();
   $("#deposit_success").hide();
   // inputs
@@ -689,18 +689,17 @@ const loadDepositModal = async function(TUNDRA_CONTRACT, App, S3F_ratio, STABLE_
   $("#total_deposit_amt").html(Number(s1_input) + Number(s2_input) + Number(s3_input));
   const s1_amount = ethers.BigNumber.from(String(Math.round(s1_input * 1000)) + "0".repeat(15));
   const s2_amount = ethers.BigNumber.from(String(Math.round(s2_input * 1000)) + "0".repeat(15));
-  const s3_amount = ethers.BigNumber.from(String(Math.round(s3_input * 1000)) + "0".repeat(3));
+  const s3_amount = ethers.BigNumber.from(String(Math.round(s3_input * 1000)) + "0".repeat(15));
 
-  console.log("S3F_ratio deposit modal:", S3F_ratio);
+  console.log("S3D_ratio deposit modal:", S3D_ratio);
 
   // recieving
   const minToMint = await TUNDRA_CONTRACT.calculateTokenAmount(App.YOUR_ADDRESS, [s1_amount, s2_amount, s3_amount], true)
-
   $("#receiving_amt").html((minToMint / 1e18).toFixed(6));
 
   // premium & fee
   const totalAmount = Number(s1_input) + Number(s2_input) + Number(s3_input)
-  const difference = (minToMint / 1e18 * (S3F_ratio || 1)) - totalAmount;
+  const difference = (minToMint / 1e18 * (S3D_ratio || 1)) - totalAmount;
   const premium = (totalAmount > 0 ? difference / totalAmount : 0);
   console.log("Difference:", (difference).toFixed(8));
   console.log("Premium:", (premium * 100).toFixed(6));
@@ -855,12 +854,12 @@ const tundraContract_deposit = async function (chefAbi, chefAddress, token1, tok
   //web3.utils.toBN(String(totalSupply) + "0".repeat(decimalPrecision)
   const s1_amount = ethers.BigNumber.from(String(Math.round(s1_input * 1000)) + "0".repeat(15));
   const s2_amount = ethers.BigNumber.from(String(Math.round(s2_input * 1000)) + "0".repeat(15));
-  const s3_amount = ethers.BigNumber.from(String(Math.round(s3_input * 1000)) + "0".repeat(3));
+  const s3_amount = ethers.BigNumber.from(String(Math.round(s3_input * 1000)) + "0".repeat(15));
 
   // validation
   const s1_valid = s1_input > 0 ? (s1_allowance > 0 && s1_balance / 1e18 >= s1_input): true;
   const s2_valid = s2_input > 0 ? (s2_allowance > 0 && s2_balance / 1e18 >= s2_input) : true;
-  const s3_valid = s3_input > 0 ? (s3_allowance > 0 && s3_balance / 1e6 >= s3_input) : true;
+  const s3_valid = s3_input > 0 ? (s3_allowance > 0 && s3_balance / 1e18 >= s3_input) : true;
   const total = Number(s1_input) + Number(s2_input) + Number(s3_input);
 
   const slippage = getSlippage();
@@ -917,30 +916,30 @@ function getSlippageWithdraw() {
   }
   return slippage;
 }
-const tundraContract_withdraw = async function (chefAbi, chefAddress, S3F_token, tundra_address, App) {
+const tundraContract_withdraw = async function (chefAbi, chefAddress, S3D_token, tundra_address, App) {
   $("#withdraw_confirm_btn").prop('disabled', true);
   const signer = App.provider.getSigner()
   console.log(signer)
 
   //Tokens
-  const S3F_TOKEN = new ethers.Contract(S3F_token, ERC20_ABI, signer)
+  const S3D_TOKEN = new ethers.Contract(S3D_token, ERC20_ABI, signer)
   const CHEF_CONTRACT = new ethers.Contract(chefAddress, chefAbi, signer)
-  const S3F_allowance = await S3F_TOKEN.allowance(App.YOUR_ADDRESS, tundra_address)
+  const S3D_allowance = await S3D_TOKEN.allowance(App.YOUR_ADDRESS, tundra_address)
   const withdrawPercentage = $("#withdraw_percentage").val();
   const comboChecked = $("#radio-withdraw-combo").is(':checked');
-  const FRAXChecked = $("#radio-withdraw-FRAX").is(':checked');
-  const TUSDChecked = $("#radio-withdraw-TUSD").is(':checked');
-  const USDTChecked = $("#radio-withdraw-USDT").is(':checked');
+  const usdtChecked = $("#radio-withdraw-usdt").is(':checked');
+  const busdChecked = $("#radio-withdraw-busd").is(':checked');
+  const daiChecked = $("#radio-withdraw-dai").is(':checked');
   console.log("withdrawPercentage:", withdrawPercentage);
-  const S3F_balance = await S3F_TOKEN.balanceOf(App.YOUR_ADDRESS);
-  console.log("S3F_balance:", S3F_balance);
+  const S3D_balance = await S3D_TOKEN.balanceOf(App.YOUR_ADDRESS);
+  console.log("S3D_balance:", S3D_balance);
 
   const slippage = getSlippageWithdraw();
   const slippageMultiplier = 1000 - (slippage * 10);
-  let calculatedWithdraw = S3F_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
+  let calculatedWithdraw = S3D_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
 
   let minToRemove = null;
-  if (calculatedWithdraw == 0 || S3F_allowance == 0){
+  if (calculatedWithdraw == 0 || S3D_allowance == 0){
     alert('Check approvals and input amounts first');
   } else if (comboChecked){
     minToRemove = await CHEF_CONTRACT.calculateRemoveLiquidity(App.YOUR_ADDRESS, calculatedWithdraw);
@@ -948,20 +947,20 @@ const tundraContract_withdraw = async function (chefAbi, chefAddress, S3F_token,
     if (minToRemove && minToRemove.length == 3) {
       console.log("minToRemove1:", minToRemove[0] / 1e18);
       console.log("minToRemove2:", minToRemove[1] / 1e18);
-      console.log("minToRemove3:", minToRemove[2] / 1e6);
+      console.log("minToRemove3:", minToRemove[2] / 1e18);
       minToRemoveAmount[0] = minToRemove[0].mul(slippageMultiplier).div(1000);
       minToRemoveAmount[1] = minToRemove[1].mul(slippageMultiplier).div(1000);
       minToRemoveAmount[2] = minToRemove[2].mul(slippageMultiplier).div(1000);
       console.log("minToRemoveAmount1:", minToRemoveAmount[0] / 1e18);
       console.log("minToRemoveAmount2:", minToRemoveAmount[1] / 1e18);
-      console.log("minToRemoveAmount3:", minToRemoveAmount[2] / 1e6);
+      console.log("minToRemoveAmount3:", minToRemoveAmount[2] / 1e18);
     }
     const deadline = Date.now() + 180; //3 minutes
 
     let allow = Promise.resolve()
 
     showLoading()
-    if (S3F_allowance == 0) {
+    if (S3D_allowance == 0) {
       alert("Please approve spending first")
       hideLoading();
     } else {
@@ -988,17 +987,17 @@ const tundraContract_withdraw = async function (chefAbi, chefAddress, S3F_token,
     }
   } else {
 
-    let calculatedWithdraw = S3F_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
+    let calculatedWithdraw = S3D_balance.mul(withdrawPercentage * 100 || 0).div(100).div(100);
     let tokenIndex = null;
-    if (FRAXChecked){
+    if (usdtChecked){
       tokenIndex = 0;
       minToRemove = await CHEF_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 0);
     }
-    if (TUSDChecked){
+    if (busdChecked){
       tokenIndex = 1;
       minToRemove = await CHEF_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 1);
     }
-    if (USDTChecked){
+    if (daiChecked){
       tokenIndex = 2;
       minToRemove = await CHEF_CONTRACT.calculateRemoveLiquidityOneToken(App.YOUR_ADDRESS, calculatedWithdraw, 2);
     }
@@ -1008,7 +1007,7 @@ const tundraContract_withdraw = async function (chefAbi, chefAddress, S3F_token,
     let allow = Promise.resolve()
 
     showLoading()
-    if (S3F_allowance == 0) {
+    if (S3D_allowance == 0) {
       alert("Please approve spending first")
       hideLoading();
     } else {
