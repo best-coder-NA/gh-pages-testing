@@ -401,7 +401,7 @@ async function main() {
   const userWbtcDeposited = await WBTC_CONTRACT.balanceOf(App.YOUR_ADDRESS)
   const userWbtcPoolPercent = (userWbtcDeposited / 1e18)/(totalDepositedWBTCAVAX / 1e18)*100
 
-  const DAI_CONTRACT = new ethers.Contract(SNOWGLOBE_DAI_ADDR, SNOWGLOBE_API, signer)
+  const DAI_CONTRACT = new ethers.Contract(SNOWGLOBE_DAI_ADDR, SNOWGLOBE_ABI, signer)
   const totalDepositedDAIAVAX = await DAI_CONTRACT.totalSupply()
   const userDaiDeposited = await DAI_CONTRACT.balanceOf(App.YOUR_ADDRESS)
   const userDaiPoolPercent = (userDaiDeposited / 1e18)/(totalDepositedDAIAVAX / 1e18)*100
